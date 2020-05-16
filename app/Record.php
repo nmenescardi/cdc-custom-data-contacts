@@ -12,4 +12,9 @@ class Record extends Model
     {
         return $this->belongsTo(Contact::class);
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 }

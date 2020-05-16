@@ -12,4 +12,9 @@ class Contact extends Model
     {
         return $this->hasMany(Record::class);
     }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
 }
