@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::resource('contact', 'ContactController');
 
 Route::resource('data', 'DataController');
+
+Route::resource('tag', 'TagController');
