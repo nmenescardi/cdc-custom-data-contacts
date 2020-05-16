@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Data;
+use App\Record;
 use Illuminate\Http\Request;
 
-class DataController extends Controller
+class RecordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class DataController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Data  $data
+     * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function show(Data $data)
+    public function show(Record $record)
     {
         //
     }
@@ -52,10 +52,10 @@ class DataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Data  $data
+     * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function edit(Data $data)
+    public function edit(Record $record)
     {
         //
     }
@@ -64,10 +64,10 @@ class DataController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Data  $data
+     * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Data $data)
+    public function update(Request $request, Record $record)
     {
         //
     }
@@ -75,10 +75,10 @@ class DataController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Data  $data
+     * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Data $data)
+    public function destroy(Record $record)
     {
         //
     }

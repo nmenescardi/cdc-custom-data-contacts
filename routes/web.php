@@ -17,7 +17,7 @@ Route::get('/', 'Auth\LoginController@login');
 
 Route::resource('contacts', 'ContactController');
 
-Route::resource('data', 'DataController');
+Route::resource('records', 'RecordController');
 
 Route::resource('tags', 'TagController');
 
