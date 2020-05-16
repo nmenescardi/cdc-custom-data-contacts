@@ -17,8 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('contact', 'ContactController');
+Route::resource('contacts', 'ContactController');
 
 Route::resource('data', 'DataController');
 
-Route::resource('tag', 'TagController');
+Route::resource('tags', 'TagController');
