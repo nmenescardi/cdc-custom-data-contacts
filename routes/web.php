@@ -20,6 +20,5 @@ Route::resource('data', 'DataController');
 Route::resource('tags', 'TagController');
 
 Auth::routes(['register' => false]);
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
