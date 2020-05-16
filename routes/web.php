@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'Auth\LoginController@login');
+
 Route::resource('contacts', 'ContactController');
 
 Route::resource('data', 'DataController');
