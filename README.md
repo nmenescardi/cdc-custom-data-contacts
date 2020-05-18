@@ -1,7 +1,6 @@
 # TODO:
 
 1. Model Request validation.
-1. Seeder. User with data on .env file.
 1. Logic in Controllers for CRUD operations.
 1. General layout template (reuse current).
 1. Simple Forms and tables.
