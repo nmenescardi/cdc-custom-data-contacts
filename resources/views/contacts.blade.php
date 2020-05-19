@@ -5,6 +5,27 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                <div class="card-header">Add Contact</div>
+
+                <div class="card-body">
+                    <form action="contacts" method="POST">
+                        <div class="input-group">
+                            <input type="text" name="name" id="">
+                        </div>
+                        <button type="submit">Add Contact</button>
+
+                        @csrf
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
                 <div class="card-header">Contacts</div>
 
                 <div class="card-body">

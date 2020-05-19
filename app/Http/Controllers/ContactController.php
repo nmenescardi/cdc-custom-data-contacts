@@ -39,6 +39,8 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         Contact::create($this->validateRequest());
+
+        return redirect()->back();
     }
 
     /**
