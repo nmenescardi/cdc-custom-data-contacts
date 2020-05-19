@@ -35,7 +35,7 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Record::create($this->validateRequest());
     }
 
     /**
@@ -81,5 +81,12 @@ class RecordController extends Controller
     public function destroy(Record $record)
     {
         //
+    }
+
+    protected function validateRequest()
+    {
+        return request()->validate([
+            'title' => 'required'
+        ]);
     }
 }
