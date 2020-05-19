@@ -12,6 +12,7 @@
                         <div class="input-group">
                             <input type="text" name="name" id="">
                         </div>
+                        <div>{{ $errors->first('name')}}</div>
                         <button type="submit">Add Contact</button>
 
                         @csrf
