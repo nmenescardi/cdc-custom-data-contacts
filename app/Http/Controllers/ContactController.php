@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class ContactController extends Controller
 {
@@ -15,6 +16,8 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::all();
+
+        return View::make('contacts', compact('contacts'));
     }
 
     /**
