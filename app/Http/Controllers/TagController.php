@@ -35,7 +35,7 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tag::create($this->validateRequest());
     }
 
     /**
@@ -81,5 +81,12 @@ class TagController extends Controller
     public function destroy(Tag $tag)
     {
         //
+    }
+
+    protected function validateRequest()
+    {
+        request()->validate([
+            'name' => 'required|unique'
+        ]);
     }
 }
