@@ -35,7 +35,7 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Contact::create($this->validateRequest());
     }
 
     /**
@@ -81,5 +81,12 @@ class ContactController extends Controller
     public function destroy(Contact $contact)
     {
         //
+    }
+
+    protected function validateRequest()
+    {
+        return request()->validate([
+            'name' => 'required|min:3'
+        ]);
     }
 }
