@@ -1,5 +1,6 @@
 # TODO:
 
+1. Fix homepage redirection issue.
 1. Logic in Controllers for CRUD operations.
 1. General layout template (reuse current).
 1. Simple Forms and tables.
