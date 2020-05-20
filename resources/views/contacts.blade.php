@@ -9,11 +9,12 @@
 
                 <div class="card-body">
                     <form action="contacts" method="POST">
-                        <div class="input-group">
-                            <input type="text" name="name" id="">
+                        <div class="form-group">
+                            <label for="name">Name: </label>
+                            <input type="text" name="name" id="name" value="{{old('name')}}" placeholder="Name" class="form-control">
                         </div>
                         <div>{{ $errors->first('name')}}</div>
-                        <button type="submit">Add Contact</button>
+                        <button type="submit" class="btn btn-primary">Add Contact</button>
 
                         @csrf
                     </form>
