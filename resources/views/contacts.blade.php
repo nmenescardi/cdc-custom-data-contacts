@@ -10,10 +10,18 @@
                 <div class="card-body">
                     <form action="contacts" method="POST">
                         <div class="form-group">
-                            <label for="name">Name: </label>
-                            <input type="text" name="name" id="name" value="{{old('name')}}" placeholder="Name" class="form-control">
+                            <label class="control-label" for="name">Name: </label>
+                            <input
+                                type="text" name="name" id="name" placeholder="Name"
+                                value="{{old('name')}}" required
+                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
+                            >
+
+                            @if($errors->has('name'))
+                                <div><span class="text-danger">{{ $errors->first('name')}}</span></div>
+                            @endif
                         </div>
-                        <div>{{ $errors->first('name')}}</div>
+
                         <button type="submit" class="btn btn-primary">Add Contact</button>
 
                         @csrf
