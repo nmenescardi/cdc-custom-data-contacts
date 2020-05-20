@@ -1,7 +1,6 @@
 # TODO:
 
-1. Simple Forms and tables. Add old values
-1. Bootstrap forms. Page title. E11
+1. Simple Forms and tables.
 1. Logic in Controllers for CRUD operations. E15
 1. Fix homepage redirection issue.
 1. General layout template (reuse current).
