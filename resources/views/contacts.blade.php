@@ -13,14 +13,11 @@
                     <form action="contacts" method="POST">
                         <div class="form-group">
                             <label class="control-label" for="name">Name: </label>
-                            <input
-                                type="text" name="name" id="name" placeholder="Name"
-                                value="{{old('name')}}" required
-                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                            >
+                            <input type="text" name="name" id="name" placeholder="Name" value="{{old('name')}}" required
+                                class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}">
 
                             @if($errors->has('name'))
-                                <div><span class="text-danger">{{ $errors->first('name')}}</span></div>
+                            <div><span class="text-danger">{{ $errors->first('name')}}</span></div>
                             @endif
                         </div>
 
@@ -41,11 +38,30 @@
                 <div class="card-header">Contacts</div>
 
                 <div class="card-body">
-                    <ul>
-                        @foreach ($contacts as $contact)
-                            <li>{{$contact->name}}</li>
-                        @endforeach
-                    </ul>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($contacts as $contact)
+                            <tr>
+                                <th scope="row">{{$loop->iteration}}</th>
+                                <td>{{$contact->name}}</td>
+                                <td>
+                                    <i class="fas fa-edit"></i>
+                                    <i class="fas fa-trash-alt"></i>
+                                </td>
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+
                 </div>
 
             </div>
