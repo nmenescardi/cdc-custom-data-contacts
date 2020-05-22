@@ -17015,3 +17015,19 @@ i.fas {
           filter: brightness(0.9);
 }
 
+.btn-plus {
+  font-size: 16px;
+  line-height: 15px;
+  padding: 6px;
+}
+
+.cdc-table__header {
+  display: flex;
+  align-items: center;
+}
+
+.cdc-table__title {
+  line-height: 1.575rem;
+  margin: 0 15px 0 0;
+}
+
