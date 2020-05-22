@@ -27,7 +27,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return View::make('contacts.create');
     }
 
     /**
