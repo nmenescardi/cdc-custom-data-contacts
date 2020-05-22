@@ -17,7 +17,7 @@ class ContactController extends Controller
     {
         $contacts = Contact::all();
 
-        return View::make('contacts', compact('contacts'));
+        return View::make('contacts.index', compact('contacts'));
     }
 
     /**
