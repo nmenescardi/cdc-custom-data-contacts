@@ -53,8 +53,8 @@
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$contact->name}}</td>
                                 <td>
-                                    <i class="fas fa-edit"></i>
-                                    <i class="fas fa-trash-alt"></i>
+                                    <a href="#" class="action-icons"><i class="fas fa-edit"></i></a>
+                                    <a href="#" class="action-icons"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>
                             @endforeach
