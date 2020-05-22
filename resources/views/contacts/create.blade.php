@@ -10,7 +10,7 @@
                 <div class="card-header">Add Contact</div>
 
                 <div class="card-body">
-                    <form action="contacts" method="POST">
+                    <form action="{{route('contacts.store')}}" method="POST">
                         <div class="form-group">
                             <label class="control-label" for="name">Name: </label>
                             <input type="text" name="name" id="name" placeholder="Name" value="{{old('name')}}" required

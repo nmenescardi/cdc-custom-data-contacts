@@ -40,7 +40,7 @@ class ContactController extends Controller
     {
         Contact::create($this->validateRequest());
 
-        return redirect()->back();
+        return redirect('contacts');
     }
 
     /**
