@@ -1,7 +1,7 @@
 # TODO:
 
-1. Simple Forms and tables.
-1. Logic in Controllers for CRUD operations. E15
+1. Logic in Controllers for CRUD operations. E16
+1. Single show view?.
 1. Fix homepage redirection issue.
 1. General layout template (reuse current).
 1. Scope. To filter models (active, inactive).
