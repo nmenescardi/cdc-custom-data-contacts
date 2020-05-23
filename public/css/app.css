@@ -17061,3 +17061,9 @@ i.fas {
   color: #fff;
 }
 
+.records-table .btn-plus {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px;
+}
+

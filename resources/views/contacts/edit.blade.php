@@ -48,9 +48,14 @@
                 </div>
             </div>
 
-            <div class="col-12 cdc-table__main-col mt-5">
+            <div class="col-12 cdc-table__main-col mt-5 records-table">
                 <div class="card">
-                    <div class="card-header">Records</div>
+                    <div class="card-header cdc-table__header">
+                        <div class="d-inline cdc-table__title">Records</div>
+                        <a href="{{route('records.create')}}" class="btn btn-primary btn-plus">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         <table class="table">
