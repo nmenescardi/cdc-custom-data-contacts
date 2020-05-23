@@ -17040,7 +17040,7 @@ i.fas {
   margin: 0 15px 0 0;
 }
 
-.cdc-table form {
+.cdc-table .action-column form {
   display: inline-block;
 }
 

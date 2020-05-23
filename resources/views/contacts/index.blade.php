@@ -46,7 +46,7 @@
                                             @endforeach
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="action-column">
                                         <a href="{{route('contacts.edit',['contact'=>$contact])}}"
                                             class="action-icon"><i class="fas fa-edit"></i></a>
 
