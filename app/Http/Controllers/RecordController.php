@@ -20,7 +20,9 @@ class RecordController extends Controller
      */
     public function index()
     {
-        //
+        $records = Record::all();
+
+        return view('records.index', compact('records'));
     }
 
     /**
@@ -30,7 +32,9 @@ class RecordController extends Controller
      */
     public function create()
     {
-        //
+        $record = new Record();
+
+        return view('records.create', compact('record'));
     }
 
     /**
@@ -42,6 +46,8 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         Record::create($this->validateRequest());
+
+        return redirect('records');
     }
 
     /**
@@ -52,7 +58,8 @@ class RecordController extends Controller
      */
     public function show(Record $record)
     {
-        //
+        //TODO:
+        return redirect('contacts/' . $record->contact->id . '/edit');
     }
 
     /**
@@ -63,7 +70,7 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        //
+        return view('records.edit', compact('record'));
     }
 
     /**
@@ -75,7 +82,9 @@ class RecordController extends Controller
      */
     public function update(Request $request, Record $record)
     {
-        //
+        $record->update($this->validateRequest());
+
+        return redirect('contacts/' . $record->contact->id . '/edit');
     }
 
     /**
@@ -86,13 +95,16 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
-        //
+        $record->delete();
+
+        return redirect()->back();
     }
 
     protected function validateRequest()
     {
         return request()->validate([
-            'title' => 'required'
+            'title' => 'required',
+            'description' => '',
         ]);
     }
 }
