@@ -86,7 +86,7 @@
                                             @endforeach
                                         </div>
                                     </td>
-                                    <td>
+                                    <td class="action-column">
                                         <a href="{{route('records.edit',['record'=>$record])}}" class="action-icon"><i
                                                 class="fas fa-edit"></i></a>
 
