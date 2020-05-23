@@ -17008,6 +17008,7 @@ i.fas {
 
 .action-icon {
   margin: 0 5px;
+  padding: 0;
   background: transparent;
   border: none;
 }
@@ -17023,6 +17024,12 @@ i.fas {
   padding: 6px;
 }
 
+@media all and (max-width: 767px) {
+  .cdc-table__main-col {
+    padding: 0;
+  }
+}
+
 .cdc-table__header {
   display: flex;
   align-items: center;
@@ -17035,5 +17042,14 @@ i.fas {
 
 .cdc-table form {
   display: inline-block;
+}
+
+.tags .tag {
+  color: #fff;
+  padding: 0.4em 0.8em;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  margin: 0 0.5px;
 }
 

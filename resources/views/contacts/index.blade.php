@@ -7,7 +7,7 @@
 <div class="contact-list cdc-table">
     <div class="container mt-4">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-lg-10 cdc-table__main-col">
                 <div class="card">
                     <div class="card-header cdc-table__header">
                         <h3 class="d-inline cdc-table__title">Contacts</h3>
@@ -22,6 +22,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
+                                    <th scope="col">Tags</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -31,6 +32,13 @@
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$contact->name}}</td>
+                                    <td>
+                                        <div class="tags">
+                                            @foreach ($contact->tags as $tag)
+                                            <span class="tag badge badge-pill badge-primary">{{$tag->name}}</span>
+                                            @endforeach
+                                        </div>
+                                    </td>
                                     <td>
                                         <a href="{{route('contacts.edit',['contact'=>$contact])}}"
                                             class="action-icon"><i class="fas fa-edit"></i></a>
