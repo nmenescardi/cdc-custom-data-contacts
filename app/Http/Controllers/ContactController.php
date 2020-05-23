@@ -57,7 +57,8 @@ class ContactController extends Controller
      */
     public function show(Contact $contact)
     {
-        //
+        //TODO: redirect to contact list for now
+        return redirect('contacts');
     }
 
     /**
