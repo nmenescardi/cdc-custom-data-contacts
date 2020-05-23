@@ -38,7 +38,11 @@
                                     <td>
                                         <div class="tags">
                                             @foreach ($contact->tags as $tag)
-                                            <span class="tag badge badge-pill badge-primary">{{$tag->name}}</span>
+                                            <span class="tag badge badge-pill badge-primary">
+                                                <a href="{{ route('tags.edit', ['tag' => $tag] ) }}">
+                                                    {{$tag->name}}
+                                                </a>
+                                            </span>
                                             @endforeach
                                         </div>
                                     </td>
