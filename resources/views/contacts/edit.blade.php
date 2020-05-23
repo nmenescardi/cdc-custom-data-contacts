@@ -35,7 +35,7 @@
 
             <div class="col-md-6 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header">Tags</div>
+                    <div class="card-header">Contact's Tags</div>
 
                     <div class="card-body">
                         <div class="tags">
@@ -53,13 +53,52 @@
                     <div class="card-header">Records</div>
 
                     <div class="card-body">
-                        <div class="records">
-                            @foreach ($contact->records as $record)
-                            <span class="record">{{$record->title}}</span>
-                            <span class="record">{{-- {{$record->description}} --}}</span>
-                            <br />
-                            @endforeach
-                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Record Tags</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach ($contact->records as $record)
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>
+                                        <a href="{{route('records.edit',['record'=>$record])}}">{{$record->title}}</a>
+                                    </td>
+                                    <td>
+                                        <div class="tags">
+                                            @foreach ($record->tags as $tag)
+                                            <span class="tag badge badge-pill badge-primary">
+                                                <a href="{{ route('tags.edit', ['tag' => $tag] ) }}">
+                                                    {{$tag->name}}
+                                                </a>
+                                            </span>
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('records.edit',['record'=>$record])}}" class="action-icon"><i
+                                                class="fas fa-edit"></i></a>
+
+                                        <form action="{{route('records.destroy',['record' => $record])}}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="action-icon"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </form>
+
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+
                     </div>
 
                 </div>
