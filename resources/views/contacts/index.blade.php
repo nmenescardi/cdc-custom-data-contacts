@@ -32,7 +32,8 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$contact->name}}</td>
                                     <td>
-                                        <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
+                                        <a href="{{route('contacts.edit',['contact'=>$contact])}}"
+                                            class="action-icon"><i class="fas fa-edit"></i></a>
 
                                         <form action="{{route('contacts.destroy',['contact' => $contact])}}"
                                             method="POST">
