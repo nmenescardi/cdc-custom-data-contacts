@@ -58,7 +58,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
-                                    <th scope="col">Record Tags</th>
+                                    <th scope="col">Tags</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
