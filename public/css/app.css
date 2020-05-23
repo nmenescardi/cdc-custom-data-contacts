@@ -17044,6 +17044,10 @@ i.fas {
   display: inline-block;
 }
 
+.cdc-table .card {
+  height: 100%;
+}
+
 .tags .tag {
   color: #fff;
   padding: 0.4em 0.8em;
