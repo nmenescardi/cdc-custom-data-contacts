@@ -31,7 +31,10 @@
                                 @foreach ($contacts as $contact)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$contact->name}}</td>
+                                    <td>
+                                        <a
+                                            href="{{route('contacts.edit',['contact'=>$contact])}}">{{$contact->name}}</a>
+                                    </td>
                                     <td>
                                         <div class="tags">
                                             @foreach ($contact->tags as $tag)
