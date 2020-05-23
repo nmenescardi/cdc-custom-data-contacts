@@ -17006,11 +17006,13 @@ i.fas {
   font-size: 16px;
 }
 
-.action-icons {
+.action-icon {
   margin: 0 5px;
+  background: transparent;
+  border: none;
 }
 
-.action-icons:hover {
+.action-icon:hover {
   -webkit-filter: brightness(0.9);
           filter: brightness(0.9);
 }
@@ -17029,5 +17031,9 @@ i.fas {
 .cdc-table__title {
   line-height: 1.575rem;
   margin: 0 15px 0 0;
+}
+
+.cdc-table form {
+  display: inline-block;
 }
 

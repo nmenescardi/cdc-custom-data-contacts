@@ -23,8 +23,11 @@ i.fas.fa-trash-alt {
 i.fas {
     font-size: 16px;
 }
-.action-icons {
+.action-icon {
     margin: 0 5px;
+
+    background: transparent;
+    border: none;
 
     &:hover {
         filter: brightness(0.9);
@@ -46,5 +49,9 @@ i.fas {
     &__title {
         line-height: 1.575rem;
         margin: 0 15px 0 0;
+    }
+
+    form {
+        display: inline-block;
     }
 }

@@ -32,8 +32,16 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$contact->name}}</td>
                                     <td>
-                                        <a href="#" class="action-icons"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="action-icons"><i class="fas fa-trash-alt"></i></a>
+                                        <a href="#" class="action-icon"><i class="fas fa-edit"></i></a>
+
+                                        <form action="{{route('contacts.destroy',['contact' => $contact])}}"
+                                            method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="action-icon"><i
+                                                    class="fas fa-trash-alt"></i></button>
+                                        </form>
+
                                     </td>
                                 </tr>
                                 @endforeach
