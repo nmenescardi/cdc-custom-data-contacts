@@ -68,7 +68,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        //
+        return View::make('contacts.edit', compact('contact'));
     }
 
     /**
@@ -80,7 +80,9 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $contact->update($this->validateRequest());
+
+        return redirect('contacts');
     }
 
     /**
