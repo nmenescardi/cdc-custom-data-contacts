@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -69,7 +70,8 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return View::make('contacts.edit', compact('contact'));
+        $allTags = Tag::pluck('name', 'id')->toArray();
+        return View::make('contacts.edit', compact('contact', 'allTags'));
     }
 
     /**
@@ -82,6 +84,9 @@ class ContactController extends Controller
     public function update(Request $request, Contact $contact)
     {
         $contact->update($this->validateRequest());
+
+        if ($request->has('tag_ids'))
+            $contact->tags()->syncWithoutDetaching($request->get('tag_ids'));
 
         return redirect()->back();
     }

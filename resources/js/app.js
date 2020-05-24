@@ -6,6 +6,7 @@
 
 require("./bootstrap");
 require("select2");
+require("./select2-tags");
 
 window.Vue = require("vue");
 

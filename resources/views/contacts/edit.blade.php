@@ -24,6 +24,17 @@
                                 @endif
                             </div>
 
+                            <div class="form-group">
+                                <div class="add-tags">
+                                    <label for="tags">Add Tags:</label>
+                                    <select name="tag_ids[]" id="tags" class="form-control" multiple="multiple">
+                                        @foreach ($allTags as $key => $tag)
+                                        <option value="{{$key}}">{{$tag}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Save Contact</button>
 
                             @csrf
@@ -47,6 +58,7 @@
                             </span>
                             @endforeach
                         </div>
+
                     </div>
 
                 </div>
