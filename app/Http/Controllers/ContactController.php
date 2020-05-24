@@ -83,7 +83,7 @@ class ContactController extends Controller
     {
         $contact->update($this->validateRequest());
 
-        return redirect('contacts');
+        return redirect()->back();
     }
 
     /**
