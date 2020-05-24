@@ -8,7 +8,12 @@
         <div class="row justify-content-center">
             <div class="col-md-4 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header">Edit Tag</div>
+                    <div class="card-header cdc-table__header">
+                        <div class="d-inline cdc-table__title">Edit Tag</div>
+                        <a href="{{route('tags.create')}}" class="btn btn-primary btn-plus btn-plus--small">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         <form action="{{ route('tags.update', ['tag' => $tag]) }}" method="POST">
@@ -35,8 +40,12 @@
 
             <div class="col-md-4 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header">Contacts</div>
-
+                    <div class="card-header cdc-table__header">
+                        <div class="d-inline cdc-table__title">Contacts</div>
+                        <a href="{{route('contacts.create')}}" class="btn btn-primary btn-plus btn-plus--small">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -69,8 +78,8 @@
                 <div class="card">
                     <div class="card-header cdc-table__header">
                         <div class="d-inline cdc-table__title">Records</div>
-                        <a href="{{route('records.create')}}" class="btn btn-primary btn-plus">
-                            <i class="fa fa-plus"></i>
+                        <a href="{{route('records.create')}}" class="btn btn-primary btn-plus btn-plus--small">
+                            <i class="fa fa-plus fa-plus"></i>
                         </a>
                     </div>
 

@@ -17024,6 +17024,12 @@ i.fas {
   padding: 6px;
 }
 
+.btn-plus--small {
+  font-size: 12px;
+  line-height: 12px;
+  padding: 4px;
+}
+
 @media all and (max-width: 767px) {
   .cdc-table__main-col {
     padding: 0;
@@ -17059,11 +17065,5 @@ i.fas {
 .tags .tag,
 .tags .tag a {
   color: #fff;
-}
-
-.records-table .btn-plus {
-  font-size: 12px;
-  line-height: 12px;
-  padding: 4px;
 }
 
