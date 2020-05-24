@@ -47,9 +47,9 @@ class RecordController extends Controller
      */
     public function store(Request $request)
     {
-        Record::create($this->validateRequest());
+        $record = Record::create($this->validateRequest());
 
-        return redirect('records');
+        return redirect('contacts/' . $record->contact->id . '/edit');
     }
 
     /**
@@ -109,7 +109,7 @@ class RecordController extends Controller
         return request()->validate([
             'title' => 'required',
             'description' => '',
-            'contact_id' => '',
+            'contact_id' => 'required',
         ]);
     }
 }
