@@ -68,6 +68,9 @@ i.fas {
     }
 
     .action-column {
+        @media all and (min-width: 992px) {
+            min-width: 80px;
+        }
         form {
             display: inline-block;
         }

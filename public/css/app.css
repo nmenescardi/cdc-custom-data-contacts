@@ -17901,6 +17901,12 @@ i.fas {
   margin: 0 15px 0 0;
 }
 
+@media all and (min-width: 992px) {
+  .cdc-table .action-column {
+    min-width: 80px;
+  }
+}
+
 .cdc-table .action-column form {
   display: inline-block;
 }
