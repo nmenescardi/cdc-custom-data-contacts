@@ -9,7 +9,7 @@
             <div class="col-md-8 cdc-table__main-col">
                 <div class="card">
                     <div class="card-header cdc-table__header">
-                        <div class="d-inline cdc-table__title">Edit Tag</div>
+                        <div class="d-inline cdc-table__title">Add new Tags</div>
                     </div>
 
                     <div class="card-body">
