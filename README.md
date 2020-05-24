@@ -1,6 +1,5 @@
 # TODO:
 
-1. Logic in Controllers for CRUD operations. E16
 1. Refactor Layout in partials/components. Sass in 7-1.
 1. Multiple color tags.
 1. Fix homepage redirection issue.
