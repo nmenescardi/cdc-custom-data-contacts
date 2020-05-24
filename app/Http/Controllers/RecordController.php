@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contact;
 use App\Record;
 use Illuminate\Http\Request;
 
@@ -33,8 +34,9 @@ class RecordController extends Controller
     public function create()
     {
         $record = new Record();
+        $contacts = Contact::all();
 
-        return view('records.create', compact('record'));
+        return view('records.create', compact('record', 'contacts'));
     }
 
     /**
@@ -70,7 +72,9 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        return view('records.edit', compact('record'));
+        $contacts = Contact::all();
+
+        return view('records.edit', compact('record', 'contacts'));
     }
 
     /**
@@ -105,6 +109,7 @@ class RecordController extends Controller
         return request()->validate([
             'title' => 'required',
             'description' => '',
+            'contact_id' => '',
         ]);
     }
 }
