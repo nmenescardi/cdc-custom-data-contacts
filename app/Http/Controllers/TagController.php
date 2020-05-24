@@ -102,7 +102,7 @@ class TagController extends Controller
     protected function validateRequest()
     {
         return request()->validate([
-            'name' => 'required|unique'
+            'name' => 'required|unique:tags'
         ]);
     }
 }
