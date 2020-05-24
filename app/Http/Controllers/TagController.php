@@ -20,7 +20,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+
+        return view('tags.index', compact('tags'));
     }
 
     /**
@@ -30,7 +32,9 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        $tag = new Tag();
+
+        return view('tags.create', compact('tag'));
     }
 
     /**
@@ -42,6 +46,8 @@ class TagController extends Controller
     public function store(Request $request)
     {
         Tag::create($this->validateRequest());
+
+        return redirect('tags');
     }
 
     /**
@@ -52,7 +58,7 @@ class TagController extends Controller
      */
     public function show(Tag $tag)
     {
-        //
+        return view('tags.edit', compact('tag'));
     }
 
     /**
@@ -63,7 +69,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('tags.edit', compact('tag'));
     }
 
     /**
@@ -75,7 +81,9 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $tag->update($this->validateRequest());
+
+        return redirect()->back();
     }
 
     /**
@@ -86,12 +94,14 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return redirect()->back();
     }
 
     protected function validateRequest()
     {
-        request()->validate([
+        return request()->validate([
             'name' => 'required|unique'
         ]);
     }
