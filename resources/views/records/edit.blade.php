@@ -14,8 +14,8 @@
                         <form action="{{ route('records.update', ['record' => $record]) }}" method="POST">
                             @method('PATCH')
                             <div class="form-group">
-                                <label class="control-label" for="name">Title: </label>
-                                <input type="text" name="title" id="title" placeholder="title"
+                                <label class="control-label" for="title">Title: </label>
+                                <input type="text" name="title" id="title" placeholder="Title"
                                     value="{{ old('title') ?? $record->title }}" required
                                     class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}">
 
