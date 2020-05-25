@@ -1,6 +1,5 @@
 # TODO:
 
-1. Fix select2 tagColtroller by inserting a tag if it's new.
 1. Add tag component into new Contact.
 1. Add select2 tag component into new Tag (to store more than one per request)
 1. Add tags into Records.
@@ -18,5 +17,6 @@
 1.
 1.
 1. Vue.js SPA
+1. Fix select2 using 'tag:true' to allow new tags. Save using AJAX
 1.
 1.
