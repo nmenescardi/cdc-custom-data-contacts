@@ -34,7 +34,9 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return View::make('contacts.create');
+        $allTags = Tag::pluck('name', 'id')->toArray();
+
+        return View::make('contacts.create', compact('allTags'));
     }
 
     /**
@@ -45,7 +47,9 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        Contact::create($this->validateRequest());
+        $newContact = Contact::create($this->validateRequest());
+
+        $newContact->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect('contacts');
     }
