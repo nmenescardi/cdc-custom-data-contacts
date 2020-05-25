@@ -28,7 +28,7 @@
                                 <select name="contact_id" id="contact_id" class="form-control">
                                     @foreach ($contacts as $contact)
                                     <option value="{{ $contact->id }}"
-                                        {{ $contact->id == $record->contact_id ? 'selected' : '' }}>
+                                        {{ $contact->id == $prefilledContact ? 'selected' : '' }}>
                                         {{ $contact->name }}</option>
                                     @endforeach
                                 </select>
