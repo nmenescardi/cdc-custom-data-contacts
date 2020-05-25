@@ -1,7 +1,6 @@
 # TODO:
 
 1. Add tags into Records.
-1. Fix tag field responsiveness.
 1. Add Pagination into Main contacts table.
 1. Refactor Layout in partials/components (Laraver 7 tags). Sass in 7-1.
 1. Unit test
