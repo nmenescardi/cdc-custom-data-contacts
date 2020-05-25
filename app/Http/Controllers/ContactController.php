@@ -89,8 +89,7 @@ class ContactController extends Controller
     {
         $contact->update($this->validateRequest());
 
-        if ($request->has('tag_list'))
-            $contact->tags()->syncWithoutDetaching($request->get('tag_list'));
+        $contact->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect()->back();
     }
