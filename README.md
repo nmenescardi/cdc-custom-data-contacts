@@ -1,6 +1,5 @@
 # TODO:
 
-1. Add tag component into new Contact.
 1. Add tags into Records.
 1. Fix tag field responsiveness.
 1. Add Pagination into Main contacts table.
