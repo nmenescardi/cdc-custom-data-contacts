@@ -32,9 +32,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        $tag = new Tag();
-
-        return view('tags.create', compact('tag'));
+        return view('tags.create');
     }
 
     /**
@@ -45,9 +43,13 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        Tag::create($this->validateRequest());
+        foreach ($request->get('tag_list') as $tag) {
+            Tag::updateOrCreate([
+                'name' => $tag
+            ]);
+        }
 
-        return redirect('tags');
+        return redirect('contacts');
     }
 
     /**

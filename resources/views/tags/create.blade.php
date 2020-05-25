@@ -14,15 +14,15 @@
 
                     <div class="card-body">
                         <form action="{{ route('tags.store') }}" method="POST">
-                            <div class="form-group">
-                                <label class="control-label" for="name">Name: </label>
-                                <input type="text" name="name" id="name" placeholder="Name"
-                                    value="{{ old('name') ?? $tag->name }}" required
-                                    class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}">
 
-                                @if( $errors->has('name') )
-                                <div><span class="text-danger">{{ $errors->first('name') }}</span></div>
-                                @endif
+                            <div class="form-group">
+                                <div class="add-tags">
+                                    <label for="tags">Add Tags:</label>
+                                    <select name="tag_list[]" id="tags" class="form-control" multiple="multiple"
+                                        data-new-tags='true'>
+                                        <option value=""></option>
+                                    </select>
+                                </div>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Save Tag</button>
