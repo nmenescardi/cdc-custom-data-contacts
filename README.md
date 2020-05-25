@@ -1,8 +1,8 @@
 # TODO:
 
 1. Add tag component into new Contact.
-1. Add select2 tag component into new Tag (to store more than one per request)
 1. Add tags into Records.
+1. Fix tag field responsiveness.
 1. Add Pagination into Main contacts table.
 1. Refactor Layout in partials/components (Laraver 7 tags). Sass in 7-1.
 1. Unit test
