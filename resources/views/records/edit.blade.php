@@ -37,8 +37,7 @@
 
                             <div class="form-group">
                                 <label class="control-label" for="name">Description: </label>
-                                <textarea name="description" id="description" placeholder="description" required
-                                    rows="10"
+                                <textarea name="description" id="description" placeholder="description" rows="10"
                                     class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ old('description') ?? $record->description }}</textarea>
 
                                 @if( $errors->has('description') )
