@@ -43,7 +43,7 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        foreach ($request->get('tag_list') as $tag) {
+        foreach ($request->get('tag_list') ?? [] as $tag) {
             Tag::updateOrCreate([
                 'name' => $tag
             ]);

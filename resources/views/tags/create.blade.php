@@ -19,7 +19,7 @@
                                 <div class="add-tags">
                                     <label for="tags">Add Tags:</label>
                                     <select name="tag_list[]" id="tags" class="form-control" multiple="multiple"
-                                        data-new-tags='true'>
+                                        data-new-tags='true' required>
                                         <option value=""></option>
                                     </select>
                                 </div>
