@@ -55929,8 +55929,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  $(".add-tags #tags").select2({
-    placeholder: "Add Tags"
+  var tagField = $(".add-tags #tags");
+  var addNewTags = true === $(".add-tags #tags").data("new-tags");
+  tagField.select2({
+    placeholder: "Add Tags",
+    tags: addNewTags
   });
 });
 

@@ -1,5 +1,9 @@
 $(document).ready(function() {
-    $(".add-tags #tags").select2({
-        placeholder: "Add Tags"
+    const tagField = $(".add-tags #tags");
+    const addNewTags = true === $(".add-tags #tags").data("new-tags");
+
+    tagField.select2({
+        placeholder: "Add Tags",
+        tags: addNewTags
     });
 });
