@@ -55930,8 +55930,7 @@ __webpack_require__.r(__webpack_exports__);
 
 $(document).ready(function () {
   $(".add-tags #tags").select2({
-    placeholder: "Add Tags",
-    tags: true
+    placeholder: "Add Tags"
   });
 });
 
