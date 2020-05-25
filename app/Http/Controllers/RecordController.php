@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\Record;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -33,11 +34,12 @@ class RecordController extends Controller
      */
     public function create(Request $request)
     {
+        $allTags = Tag::pluck('name', 'id')->toArray();
         $prefilledContact = $request->get('prefilledContact');
-        $record = new Record();
         $contacts = Contact::all();
+        $record = new Record();
 
-        return view('records.create', compact('record', 'contacts', 'prefilledContact'));
+        return view('records.create', compact('record', 'contacts', 'prefilledContact', 'allTags'));
     }
 
     /**
@@ -49,6 +51,8 @@ class RecordController extends Controller
     public function store(Request $request)
     {
         $record = Record::create($this->validateRequest());
+
+        $record->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect('contacts/' . $record->contact->id . '/edit');
     }
@@ -73,9 +77,10 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
+        $allTags = Tag::pluck('name', 'id')->toArray();
         $contacts = Contact::all();
 
-        return view('records.edit', compact('record', 'contacts'));
+        return view('records.edit', compact('record', 'contacts', 'allTags'));
     }
 
     /**
@@ -88,6 +93,8 @@ class RecordController extends Controller
     public function update(Request $request, Record $record)
     {
         $record->update($this->validateRequest());
+
+        $record->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect('contacts/' . $record->contact->id . '/edit');
     }

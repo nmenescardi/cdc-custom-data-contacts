@@ -35,6 +35,17 @@
                             </div>
 
                             <div class="form-group">
+                                <div class="add-tags">
+                                    <label for="tags">Add Tags:</label>
+                                    <select name="tag_list[]" id="tags" class="form-control" multiple="multiple">
+                                        @foreach ($allTags as $key => $tag)
+                                        <option value="{{$key}}">{{$tag}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="control-label" for="name">Description: </label>
                                 <textarea name="description" id="description" placeholder="description" rows="10"
                                     class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ old('description') ?? $record->description }}</textarea>
