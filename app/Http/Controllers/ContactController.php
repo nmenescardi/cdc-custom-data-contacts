@@ -51,7 +51,7 @@ class ContactController extends Controller
 
         $newContact->tags()->syncWithoutDetaching($request->get('tag_list'));
 
-        return redirect('contacts');
+        return redirect('contacts/' . $newContact->id . '/edit');
     }
 
     /**
