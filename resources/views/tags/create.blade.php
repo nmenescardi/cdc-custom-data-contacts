@@ -25,7 +25,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Save Tag</button>
+                            <button type="submit" class="btn btn-primary">Add</button>
 
                             @csrf
                         </form>
