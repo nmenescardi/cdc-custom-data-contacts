@@ -22,7 +22,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::all();
+        $contacts = Contact::paginate(15);
 
         return View::make('contacts.index', compact('contacts'));
     }
