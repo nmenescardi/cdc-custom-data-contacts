@@ -46,7 +46,12 @@
 
             <div class="col-md-6 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header">Contact's Tags</div>
+                    <div class="card-header cdc-table__header">
+                        <div class="d-inline cdc-table__title">Contact's Tags</div>
+                        <a href="{{route('tags.create')}}" class="btn btn-primary btn-plus btn-plus--small">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div>
 
                     <div class="card-body">
                         <div class="tags">
