@@ -36,15 +36,7 @@
                                             href="{{route('contacts.edit',['contact'=>$contact])}}">{{$contact->name}}</a>
                                     </td>
                                     <td>
-                                        <div class="tags">
-                                            @foreach ($contact->tags as $tag)
-                                            <span class="tag badge badge-pill badge-primary">
-                                                <a href="{{ route('tags.edit', ['tag' => $tag] ) }}">
-                                                    {{$tag->name}}
-                                                </a>
-                                            </span>
-                                            @endforeach
-                                        </div>
+                                        <x-tags-list :tagList='$contact->tags' />
                                     </td>
                                     <td class="action-column">
                                         <a href="{{route('contacts.edit',['contact'=>$contact])}}"

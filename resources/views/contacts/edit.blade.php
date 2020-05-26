@@ -54,16 +54,7 @@
                     </div>
 
                     <div class="card-body">
-                        <div class="tags">
-                            @foreach ($contact->tags as $tag)
-                            <span class="tag badge badge-pill badge-primary">
-                                <a href="{{ route('tags.edit', ['tag' => $tag] ) }}">
-                                    {{$tag->name}}
-                                </a>
-                            </span>
-                            @endforeach
-                        </div>
-
+                        <x-tags-list :tagList='$contact->tags' />
                     </div>
 
                 </div>
@@ -98,15 +89,7 @@
                                         <a href="{{route('records.edit',['record'=>$record])}}">{{$record->title}}</a>
                                     </td>
                                     <td>
-                                        <div class="tags">
-                                            @foreach ($record->tags as $tag)
-                                            <span class="tag badge badge-pill badge-primary">
-                                                <a href="{{ route('tags.edit', ['tag' => $tag] ) }}">
-                                                    {{$tag->name}}
-                                                </a>
-                                            </span>
-                                            @endforeach
-                                        </div>
+                                        <x-tags-list :tagList='$record->tags' />
                                     </td>
                                     <td class="action-column">
                                         <a href="{{route('records.edit',['record'=>$record])}}" class="action-icon"><i
