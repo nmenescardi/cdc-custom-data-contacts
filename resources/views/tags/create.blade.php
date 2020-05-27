@@ -8,9 +8,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header cdc-table__header">
-                        <div class="d-inline cdc-table__title">Add new Tags</div>
-                    </div>
+
+                    <x-table-header title="Add new Tags" />
 
                     <div class="card-body">
                         <form action="{{ route('tags.store') }}" method="POST">

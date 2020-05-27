@@ -8,7 +8,8 @@
         <div class="row justify-content-center">
             <div class="col-md-6 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header">Edit Contact</div>
+
+                    <x-table-header title="Edit Contact" />
 
                     <div class="card-body">
                         <form action="{{ route('contacts.update', ['contact' => $contact]) }}" method="POST">
@@ -46,12 +47,8 @@
 
             <div class="col-md-6 cdc-table__main-col">
                 <div class="card">
-                    <div class="card-header cdc-table__header">
-                        <div class="d-inline cdc-table__title">Contact's Tags</div>
-                        <a href="{{route('tags.create')}}" class="btn btn-primary btn-plus btn-plus--small">
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+
+                    <x-table-header title="Contact's Tags" :route="route('tags.create')" />
 
                     <div class="card-body">
                         <x-tags-list :tagList='$contact->tags' />
@@ -62,13 +59,9 @@
 
             <div class="col-12 cdc-table__main-col mt-5 records-table">
                 <div class="card">
-                    <div class="card-header cdc-table__header">
-                        <div class="d-inline cdc-table__title">Records</div>
-                        <a href="{{route('records.create', ['prefilledContact' => $contact->id])}}"
-                            class="btn btn-primary btn-plus btn-plus--small">
-                            <i class="fa fa-plus fa-plus"></i>
-                        </a>
-                    </div>
+
+                    <x-table-header title="Records"
+                        :route="route('records.create', ['prefilledContact' => $contact->id])" />
 
                     <div class="card-body">
                         <table class="table">

@@ -7,7 +7,8 @@
     <div class="row justify-content-center">
         <div class="col-lg-10 cdc-table__main-col">
             <div class="card">
-                <div class="card-header">Add Contact</div>
+
+                <x-table-header title="Add Contact" />
 
                 <div class="card-body">
                     <form action="{{ route('contacts.store') }}" method="POST">
