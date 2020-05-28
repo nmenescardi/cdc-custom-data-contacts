@@ -84,17 +84,9 @@
                                     <td>
                                         <x-tags-list :tagList='$record->tags' />
                                     </td>
-                                    <td class="action-column">
-                                        <a href="{{route('records.edit',['record'=>$record])}}" class="action-icon"><i
-                                                class="fas fa-edit"></i></a>
-
-                                        <form action="{{route('records.destroy',['record' => $record])}}" method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="action-icon"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </form>
-
+                                    <td>
+                                        <x-action-icons :routeEdit="route('records.edit',['record'=>$record])"
+                                            :routeDelete="route('records.destroy',['record' => $record])" />
                                     </td>
                                 </tr>
                                 @endforeach

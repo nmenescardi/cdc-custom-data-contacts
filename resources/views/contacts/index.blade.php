@@ -34,18 +34,9 @@
                                     <td>
                                         <x-tags-list :tagList='$contact->tags' />
                                     </td>
-                                    <td class="action-column">
-                                        <a href="{{route('contacts.edit',['contact'=>$contact])}}"
-                                            class="action-icon"><i class="fas fa-edit"></i></a>
-
-                                        <form action="{{route('contacts.destroy',['contact' => $contact])}}"
-                                            method="POST">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="action-icon"><i
-                                                    class="fas fa-trash-alt"></i></button>
-                                        </form>
-
+                                    <td>
+                                        <x-action-icons :routeEdit="route('contacts.edit',['contact'=>$contact])"
+                                            :routeDelete="route('contacts.destroy',['contact' => $contact])" />
                                     </td>
                                 </tr>
                                 @endforeach
