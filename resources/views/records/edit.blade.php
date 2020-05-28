@@ -25,16 +25,7 @@
                                 @endif
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label" for="contact_id">Contact</label>
-                                <select name="contact_id" id="contact_id" class="form-control">
-                                    @foreach ($contacts as $contact)
-                                    <option value="{{ $contact->id }}"
-                                        {{ $contact->id == $record->contact_id ? 'selected' : '' }}>
-                                        {{ $contact->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <x-contacts-list :contacts="$contacts" :selectedContactID="$record->contact_id" />
 
                             <div class="form-group">
                                 <div class="add-tags">
