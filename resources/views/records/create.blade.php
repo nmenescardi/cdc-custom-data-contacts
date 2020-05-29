@@ -12,43 +12,9 @@
 
                     <div class="card-body">
                         <form action="{{ route('records.store') }}" method="POST">
-                            <div class="form-group">
-                                <label class="control-label" for="name">Title: </label>
-                                <input type="text" name="title" id="title" placeholder="title"
-                                    value="{{ old('title') ?? $record->title }}" required
-                                    class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}">
 
-                                @if( $errors->has('title') )
-                                <div><span class="text-danger">{{ $errors->first('title') }}</span></div>
-                                @endif
-                            </div>
-
-                            <x-contacts-list :contacts="$contacts" :selectedContactID="$prefilledContact" />
-
-                            <div class="form-group">
-                                <div class="add-tags">
-                                    <label for="tags">Add Tags:</label>
-                                    <select name="tag_list[]" id="tags" class="form-control" multiple="multiple">
-                                        @foreach ($allTags as $key => $tag)
-                                        <option value="{{$key}}">{{$tag}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label" for="name">Description: </label>
-                                <textarea name="description" id="description" placeholder="description" rows="10"
-                                    class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}">{{ old('description') ?? $record->description }}</textarea>
-
-                                @if( $errors->has('description') )
-                                <div><span class="text-danger">{{ $errors->first('description') }}</span></div>
-                                @endif
-                            </div>
-
-                            <button type="submit" class="btn btn-primary">Save Record</button>
-
-                            @csrf
+                            <x-records-form :record="$record" :allTags="$allTags" buttonLabel="Save Record"
+                                :contacts="$contacts" />
                         </form>
                     </div>
 
