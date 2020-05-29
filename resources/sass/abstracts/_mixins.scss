@@ -1,0 +1,227 @@
+// ***************************************************************************
+// RESPONSIVE DESIGN MIXIN
+// ***************************************************************************
+@mixin mq-min($bp) {
+    @media (min-width: #{map-get($media-query-breakpoints, $bp)} ) {
+        @content;
+    }
+}
+@mixin mq-max($bp) {
+    @media (max-width: #{map-get($media-query-breakpoints, $bp) - 1px}) {
+        @content;
+    }
+}
+
+// Fonts
+/* @mixin ivar-reg($weight: 400) {
+    font-family: "IvarText-Regular";
+    font-weight: $weight;
+} */
+
+/* @mixin small-label($color: inherit) {
+    text-transform: uppercase;
+    font-size: 1rem;
+    @include unica-reg;
+    letter-spacing: 0.75px;
+    color: $color;
+} */
+
+// Sections
+@mixin full-width-section($vertical_space_between_sections: 100) {
+    /* width: 100%;
+    max-width: 100vw;
+    padding: #{$vertical_space_between_sections}px 0; */
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            font-size: $min-font-size;
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(
+                    #{$min-font-size} + #{strip-unit(
+                            $max-font-size - $min-font-size
+                        )} *
+                        (
+                            (100vw - #{$min-vw}) / #{strip-unit(
+                                    $max-vw - $min-vw
+                                )}
+                        )
+                );
+            }
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+}
+
+@mixin fluid-type-default($ft_min_font: 15px, $ft_max_font: 18px) {
+    @include fluid-type(
+        $ft_min_width,
+        $ft_max_width,
+        $ft_min_font,
+        $ft_max_font
+    );
+}
+
+@mixin fluid-line-height($min-vw, $max-vw, $min-line-height, $max-line-height) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-line-height);
+    $u4: unit($max-line-height);
+
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+        & {
+            line-height: $min-line-height;
+            @media screen and (min-width: $min-vw) {
+                line-height: calc(
+                    #{$min-line-height} + #{strip-unit(
+                            $max-line-height - $min-line-height
+                        )} *
+                        (
+                            (100vw - #{$min-vw}) / #{strip-unit(
+                                    $max-vw - $min-vw
+                                )}
+                        )
+                );
+            }
+            @media screen and (min-width: $max-vw) {
+                line-height: $max-line-height;
+            }
+        }
+    }
+}
+
+@mixin fluid-line-height-default(
+    $min-line-height: 15px,
+    $max-line-height: 18px
+) {
+    @include fluid-line-height(
+        $ft_min_width,
+        $ft_max_width,
+        $min-line-height,
+        $max-line-height
+    );
+}
+
+//Links
+@mixin green-link($font-weight: 500) {
+    /*  @include font-sans-serif($font-weight);
+  @include link-with-arrow;
+
+  color: var(--color-green);
+  text-decoration: none;
+  text-transform: uppercase;
+
+  @include fluid-type-default(16px, 18px);
+
+  letter-spacing: 2px;
+  line-height: 30px;
+
+  &:hover {
+    @include link-hover-color;
+  } */
+}
+
+@mixin link-hover-color {
+    /* color: var(--color-green);
+  filter: opacity(0.7); */
+}
+
+@mixin small-label-subtitle() {
+    font-size: 1.1rem;
+    letter-spacing: 0.3px;
+}
+
+@mixin base-button() {
+    /* @include unica-reg; */
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    border-radius: 0.4rem;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+
+    transition: all 0.1s ease-out;
+    &:hover {
+        filter: brightness(1.05);
+
+        &,
+        & * {
+            text-decoration: none;
+        }
+    }
+}
+
+@mixin gray-button($bg-color: #e6e6e6, $btn-font-color: #7c7c7c) {
+    @include base-button;
+    background-color: $bg-color;
+    color: $btn-font-color;
+}
+
+@mixin dark-button() {
+    @include base-button;
+    background-color: $black;
+    color: $white;
+}
+
+@mixin aspect-ratio($aspect-ratio: 66.66%) {
+    position: relative;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        padding-bottom: $aspect-ratio;
+    }
+
+    & > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@function convert-font($value, $currentUnit, $convertUnit) {
+    @if $currentUnit == px {
+        @if $convertUnit == ems {
+            @return $value / 16 + em;
+        } @else if $convertUnit == percent {
+            @return percentage($value / 16);
+        }
+    } @else if $currentUnit == ems {
+        @if $convertUnit == px {
+            @return $value * 16 + px;
+        } @else if $convertUnit == percent {
+            @return percentage($value);
+        }
+    } @else if $currentUnit == percent {
+        @if $convertUnit == px {
+            @return $value * 16 / 100 + px;
+        } @else if $convertUnit == ems {
+            @return $value / 100 + em;
+        }
+    } @else if $currentUnit == pts {
+        @if $convertUnit == px {
+            @return $value * 1.3333 + px;
+        } @else if $convertUnit == ems {
+            @return $value / 18.5 + em;
+        } @else if $convertUnit == percent {
+            @return percentage($value / 12);
+        }
+    }
+}

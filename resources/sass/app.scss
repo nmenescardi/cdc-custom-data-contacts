@@ -1,9 +1,6 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Nunito");
 
-// Variables
-@import "variables";
-
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
@@ -15,6 +12,15 @@
 
 @import "~@ttskch/select2-bootstrap4-theme/src/layout";
 @import "~select2/src/scss/core";
+
+/* Including own styles */
+// abstracts
+@import "abstracts/variables";
+@import "abstracts/mixins";
+/* @import "abstracts/maps"; */
+
+// base
+@import "base/common";
 
 // App styles
 i.fas.fa-edit {
