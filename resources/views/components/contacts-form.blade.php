@@ -10,16 +10,7 @@
     @endif
 </div>
 
-<div class="form-group">
-    <div class="add-tags">
-        <label for="tags">Add Tags:</label>
-        <select name="tag_list[]" id="tags" class="form-control" multiple="multiple">
-            @foreach ($allTags as $key => $tag)
-            <option value="{{$key}}">{{$tag}}</option>
-            @endforeach
-        </select>
-    </div>
-</div>
+<x-existing-tags-field :allTags="$allTags" />
 
 <button type="submit" class="btn btn-primary">{{ $buttonLabel }}</button>
 
