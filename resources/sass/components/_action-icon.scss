@@ -1,0 +1,21 @@
+.action-icon {
+    margin: 0 5px;
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+i.fas.fa-edit {
+    color: $yellow-dark;
+}
+i.fas.fa-trash-alt {
+    color: $red;
+}
+i.fas {
+    font-size: 16px;
+}

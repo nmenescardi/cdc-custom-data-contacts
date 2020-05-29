@@ -17868,8 +17868,6 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     color: $color;
 } */
 
-/* @import "abstracts/maps"; */
-
 /* @font-face {
   font-family: "Unica77LL-Regular";
   src: url("../fonts/Unica77LL-Regular.otf") format("opentype");
@@ -17912,18 +17910,6 @@ html > body img {
   height: auto;
 }
 
-i.fas.fa-edit {
-  color: #f8e11a;
-}
-
-i.fas.fa-trash-alt {
-  color: #e3342f;
-}
-
-i.fas {
-  font-size: 16px;
-}
-
 .action-icon {
   margin: 0 5px;
   padding: 0;
@@ -17934,6 +17920,18 @@ i.fas {
 .action-icon:hover {
   -webkit-filter: brightness(0.9);
           filter: brightness(0.9);
+}
+
+i.fas.fa-edit {
+  color: #f8e11a;
+}
+
+i.fas.fa-trash-alt {
+  color: #e3342f;
+}
+
+i.fas {
+  font-size: 16px;
 }
 
 .btn-plus {

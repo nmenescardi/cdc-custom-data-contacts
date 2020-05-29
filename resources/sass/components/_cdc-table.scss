@@ -1,0 +1,30 @@
+.cdc-table {
+    @media all and (max-width: 767px) {
+        &__main-col {
+            padding: 0;
+        }
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+    }
+
+    &__title {
+        line-height: 1.575rem;
+        margin: 0 15px 0 0;
+    }
+
+    .action-column {
+        @media all and (min-width: 992px) {
+            min-width: 80px;
+        }
+        form {
+            display: inline-block;
+        }
+    }
+
+    .card {
+        height: 100%;
+    }
+}
