@@ -1,6 +1,6 @@
 # TODO:
 
-1. Refactor Layout in partials/components (Laraver 7 tags). Sass in 7-1.
+1. Refactor Sass in 7-1.
 1. Unit test
 1. ------- Git tag 0.1.0
 1.
