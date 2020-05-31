@@ -37,21 +37,29 @@ class ContactsTest extends TestCase
     /** @test */
     public function a_name_is_required()
     {
-        $response = $this->actAs->post('/contacts', []);
+        $initialURL = route('contacts.create');
+
+        $response = $this->actAs->from($initialURL)->post('/contacts', []);
 
         $response->assertSessionHasErrors('name');
         $this->assertCount(0, Contact::all());
+
+        $response->assertRedirect($initialURL);
     }
 
     /** @test */
     public function name_has_at_least_3_chars()
     {
-        $response = $this->actAs->post('/contacts', [
+        $initialURL = route('contacts.create');
+
+        $response = $this->actAs->from($initialURL)->post('/contacts', [
             'name' => '12'
         ]);
 
         $response->assertSessionHasErrors('name');
         $this->assertCount(0, Contact::all());
+
+        $response->assertRedirect($initialURL);
     }
 
     /** @test */
@@ -63,7 +71,9 @@ class ContactsTest extends TestCase
 
         $newContact = Contact::first();
 
-        $response = $this->actAs->patch(
+        $initialURL = route('contacts.edit', $newContact->id);
+
+        $response = $this->actAs->from($initialURL)->patch(
             route('contacts.update', $newContact->id),
             [
                 'name' => 'Maria'
@@ -71,6 +81,7 @@ class ContactsTest extends TestCase
         );
 
         $this->assertEquals('Maria', Contact::first()->name);
+        $response->assertRedirect($initialURL);
     }
 
     /** @test */
@@ -88,5 +99,14 @@ class ContactsTest extends TestCase
         );
 
         $this->assertCount(0, Contact::all());
+        $response->assertRedirect('/contacts');
+    }
+
+
+    public function from(string $url)
+    {
+        $this->app['session']->setPreviousUrl($url);
+
+        return $this;
     }
 }
