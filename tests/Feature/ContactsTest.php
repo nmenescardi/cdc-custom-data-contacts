@@ -45,4 +45,15 @@ class ContactsTest extends TestCase
         $response->assertSessionHasErrors('name');
         $this->assertCount(0, Contact::all());
     }
+
+    /** @test */
+    public function name_has_at_least_3_chars()
+    {
+        $response = $this->actAs->post('/contacts', [
+            'name' => '12'
+        ]);
+
+        $response->assertSessionHasErrors('name');
+        $this->assertCount(0, Contact::all());
+    }
 }
