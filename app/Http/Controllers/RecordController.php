@@ -54,7 +54,7 @@ class RecordController extends Controller
 
         $record->tags()->syncWithoutDetaching($request->get('tag_list'));
 
-        return redirect('contacts/' . $record->contact->id . '/edit');
+        return redirect(route('contacts.edit', $record->contact->id));
     }
 
     /**
@@ -66,7 +66,7 @@ class RecordController extends Controller
     public function show(Record $record)
     {
         //TODO:
-        return redirect('contacts/' . $record->contact->id . '/edit');
+        return redirect(route('contacts.edit', $record->contact->id));
     }
 
     /**
@@ -96,7 +96,7 @@ class RecordController extends Controller
 
         $record->tags()->syncWithoutDetaching($request->get('tag_list'));
 
-        return redirect('contacts/' . $record->contact->id . '/edit');
+        return redirect(route('contacts.edit', $record->contact->id));
     }
 
     /**
@@ -107,9 +107,10 @@ class RecordController extends Controller
      */
     public function destroy(Record $record)
     {
+        $contactId = $record->contact->id;
         $record->delete();
 
-        return redirect()->back();
+        return redirect(route('contacts.edit', $contactId));
     }
 
     protected function validateRequest()
