@@ -24,7 +24,7 @@ class ContactsTest extends TestCase
     }
 
     /** @test */
-    public function aContactCanBeAdded()
+    public function a_contact_can_be_added()
     {
 
         $this->withoutExceptionHandling();
@@ -38,7 +38,7 @@ class ContactsTest extends TestCase
     }
 
     /** @test */
-    public function aNameIsRequired()
+    public function a_name_is_required()
     {
         $response = $this->actAs->post('/contacts', []);
 
