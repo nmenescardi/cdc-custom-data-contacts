@@ -61,13 +61,32 @@ class ContactsTest extends TestCase
             'name' => 'Carlos'
         ]);
 
+        $newContact = Contact::first();
+
         $response = $this->actAs->patch(
-            route('contacts.update', 1),
+            route('contacts.update', $newContact->id),
             [
                 'name' => 'Maria'
             ]
         );
 
         $this->assertEquals('Maria', Contact::first()->name);
+    }
+
+    /** @test */
+    public function a_contact_can_be_deleted()
+    {
+        $this->actAs->post(
+            '/contacts',
+            ['name' => 'carlos']
+        );
+
+        $newContact = Contact::first();
+
+        $response = $this->actAs->delete(
+            route('contacts.destroy', $newContact->id)
+        );
+
+        $this->assertCount(0, Contact::all());
     }
 }
