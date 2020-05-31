@@ -26,9 +26,6 @@ class ContactsTest extends TestCase
     /** @test */
     public function a_contact_can_be_added()
     {
-
-        $this->withoutExceptionHandling();
-
         $response = $this->actAs->post('/contacts', [
             'name' => 'Carlos'
         ]);
@@ -55,5 +52,22 @@ class ContactsTest extends TestCase
 
         $response->assertSessionHasErrors('name');
         $this->assertCount(0, Contact::all());
+    }
+
+    /** @test */
+    public function a_contact_can_be_updated()
+    {
+        $this->actAs->post('/contacts', [
+            'name' => 'Carlos'
+        ]);
+
+        $response = $this->actAs->patch(
+            route('contacts.update', 1),
+            [
+                'name' => 'Maria'
+            ]
+        );
+
+        $this->assertEquals('Maria', Contact::first()->name);
     }
 }
