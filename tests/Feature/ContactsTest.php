@@ -31,7 +31,9 @@ class ContactsTest extends TestCase
         ]);
 
         $this->assertCount(1, Contact::all());
-        $response->assertStatus(302);
+
+        $newContactId = Contact::first()->id;
+        $response->assertRedirect(route('contacts.edit', $newContactId));
     }
 
     /** @test */
