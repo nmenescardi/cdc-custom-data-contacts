@@ -17,4 +17,9 @@ class Contact extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+
+    public function addTags($tags)
+    {
+        $this->tags()->syncWithoutDetaching($tags);
+    }
 }
