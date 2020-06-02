@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Contact;
+use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -104,7 +105,29 @@ class ContactsTest extends TestCase
         $response->assertRedirect('/contacts');
     }
 
-    //TODO: Add contact passing tag_list
+    /** @test */
+    public function add_a_contact_with_tags()
+    {
+        $tagId1 = factory(Tag::class)->create()->id;
+        $tagId2 = factory(Tag::class)->create()->id;
+        $tagId3 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->post('/contacts', [
+            'name' => 'Carlos',
+            'tag_list' => [
+                $tagId1, $tagId2, $tagId3
+            ]
+        ]);
+
+        $this->assertCount(1, Contact::all());
+
+        $newContactTags = Contact::first()->tags;
+
+        $this->assertTrue($newContactTags->contains($tagId1));
+        $this->assertTrue($newContactTags->contains($tagId2));
+        $this->assertTrue($newContactTags->contains($tagId3));
+    }
+
 
     //TODO: Modify contact with tag
 
