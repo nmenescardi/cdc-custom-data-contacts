@@ -160,8 +160,34 @@ class ContactsTest extends TestCase
     }
 
 
+    /** @test */
+    public function contact_does_not_have_repeated_tags()
+    {
+        $tagId1 = factory(Tag::class)->create()->id;
+        $tagId2 = factory(Tag::class)->create()->id;
 
-    //TODO: Modify contact with tag
+        $response = $this->actAs->post('/contacts', [
+            'name' => 'Carlos',
+            'tag_list' => [$tagId1, $tagId2]
+        ]);
+
+        $newContact = Contact::first();
+
+        $newContactTags = $newContact->tags;
+
+        $this->assertEquals(2, $newContactTags->count());
+
+        $response = $this->actAs->patch(
+            route('contacts.update', $newContact->id),
+            [
+                'name' => 'Carlos',
+                'tag_list' => [$tagId1, $tagId2]
+            ]
+        );
+
+        $newContactTags = $newContact->fresh()->tags;
+        $this->assertEquals(2, $newContactTags->count());
+    }
 
 
     public function from(string $url)
