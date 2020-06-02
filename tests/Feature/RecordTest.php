@@ -126,8 +126,25 @@ class RecordTest extends TestCase
         $this->assertEquals($contact2->id, $newRecord->fresh()->contact->id);
     }
 
-    //TODO: Delete
+    public function test_a_record_can_be_deleted()
+    {
+        $contact = factory(Contact::class, 1)->create();
 
+        $this->actAs->post(route('records.store'), [
+            'title' => 'new title',
+            'contact_id' => $contact->first()->id
+        ]);
+
+        $this->assertCount(1, Record::all());
+
+        $record = Record::first();
+
+        $this->actAs->delete(route('records.destroy', [
+            'record' => $record
+        ]));
+
+        $this->assertCount(0, Record::all());
+    }
 
 
     //TODO: Modify Record with tag
