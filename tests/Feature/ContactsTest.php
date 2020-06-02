@@ -129,6 +129,35 @@ class ContactsTest extends TestCase
     }
 
 
+    /** @test */
+    public function modify_a_contact_with_new_tags()
+    {
+        $tagId1 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->post('/contacts', [
+            'name' => 'Carlos',
+            'tag_list' => [$tagId1]
+        ]);
+
+        $newContact = Contact::first();
+
+        $tagId2 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->patch(
+            route('contacts.update', $newContact->id),
+            [
+                'name' => 'Carlos',
+                'tag_list' => [$tagId2]
+            ]
+        );
+
+        $newContactTags = $newContact->fresh()->tags;
+
+        $this->assertTrue($newContactTags->contains($tagId1));
+        $this->assertTrue($newContactTags->contains($tagId2));
+    }
+
+
     //TODO: Modify contact with tag
 
 
