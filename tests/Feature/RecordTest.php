@@ -53,9 +53,22 @@ class RecordTest extends TestCase
     /** @test */
     public function a_title_is_required()
     {
+        $initialURL = route('records.create');
+
+        $contact = factory(Contact::class, 1)->create()->first();
+
+        $response = $this->actAs->from($initialURL)->post('/records', [
+            'description'   => 'Something else',
+            'contact_id'    => $contact->id,
+        ]);
+
+        $response->assertSessionHasErrors('title');
+
+        $this->assertCount(0, Record::all());
+
+        $response->assertRedirect($initialURL);
     }
 
-    //TODO: Title is required
 
     //TODO: contact_id is required
 
@@ -70,4 +83,10 @@ class RecordTest extends TestCase
 
     //TODO: Modify Record with tag
 
+    public function from(string $url)
+    {
+        $this->app['session']->setPreviousUrl($url);
+
+        return $this;
+    }
 }
