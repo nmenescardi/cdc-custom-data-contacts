@@ -44,6 +44,23 @@ class ContactTest extends TestCase
         $this->assertTrue($newContactTags->contains($tagId3));
     }
 
+    /** @test */
+    public function contact_does_not_have_repeated_tags()
+    {
+        $tagId1 = factory(Tag::class)->create()->id;
+        $tagId2 = factory(Tag::class)->create()->id;
+        $tagId3 = factory(Tag::class)->create()->id;
+
+        $contact = Contact::firstOrCreate(['name' => 'Carlos']);
+
+        $contact->addTags([$tagId1, $tagId2]);
+
+        $contact->addTags([$tagId1, $tagId2, $tagId3]);
+
+        $newContactTags = $contact->fresh()->tags;
+        $this->assertEquals(3, $newContactTags->count());
+    }
+
 
     //TODO: test relationships?
 }
