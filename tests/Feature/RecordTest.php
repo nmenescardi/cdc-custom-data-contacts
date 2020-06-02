@@ -99,8 +99,32 @@ class RecordTest extends TestCase
         $response->assertRedirect(route('contacts.edit', $contact->id));
     }
 
+    public function test_a_record_can_be_updated()
+    {
+        $contact = factory(Contact::class, 1)->create()->first();
 
-    //TODO: Update
+        $this->actAs->post('/records', [
+            'title'         => 'first title',
+            'description'   => 'first desc',
+            'contact_id'    => $contact->id,
+        ]);
+
+        $this->assertCount(1, Record::all());
+
+        $newRecord = Record::first();
+
+        $contact2 = factory(Contact::class, 1)->create()->first();
+
+        $response = $this->actAs->patch(route('records.update', $newRecord->id), [
+            'title'         => 'new title',
+            'description'   => 'new desc',
+            'contact_id'    => $contact2->id,
+        ]);
+
+        $this->assertEquals('new title', $newRecord->fresh()->title);
+        $this->assertEquals('new desc', $newRecord->fresh()->description);
+        $this->assertEquals($contact2->id, $newRecord->fresh()->contact->id);
+    }
 
     //TODO: Delete
 
