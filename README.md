@@ -4,6 +4,7 @@
 1. ------- Git tag 0.1.0
 1.
 1.
+1. Refactor Tests
 1. Multiple color tags.
 1. Scope. To filter models (active, inactive).
 1. Add Story model. With amount of days to be inactive automatically.
