@@ -85,9 +85,19 @@ class RecordTest extends TestCase
         $response->assertRedirect($initialURL);
     }
 
+    public function test_description_can_be_nullable()
+    {
+        $contact = factory(Contact::class, 1)->create()->first();
 
+        $response = $this->actAs->post('/records', [
+            'title'         => 'Something',
+            'contact_id'    => $contact->id,
+        ]);
 
-    //TODO: desc can be nullable
+        $this->assertCount(1, Record::all());
+
+        $response->assertRedirect(route('contacts.edit', $contact->id));
+    }
 
 
     //TODO: Update
