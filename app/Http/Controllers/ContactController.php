@@ -49,6 +49,7 @@ class ContactController extends Controller
     {
         $newContact = Contact::create($this->validateRequest());
 
+        //TODO: refactor it in a new method inside the Contact model
         $newContact->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect(route('contacts.edit', $newContact->id));
@@ -89,6 +90,7 @@ class ContactController extends Controller
     {
         $contact->update($this->validateRequest());
 
+        //TODO: refactor it in a new method inside the Contact model
         $contact->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect()->back();

@@ -22,4 +22,8 @@ class ContactTest extends TestCase
 
         $this->assertCount(0, Contact::all());
     }
+
+    //TODO: test new method on Contact model to sync tags
+
+    //TODO: test relationships?
 }

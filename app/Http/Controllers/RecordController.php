@@ -52,6 +52,7 @@ class RecordController extends Controller
     {
         $record = Record::create($this->validateRequest());
 
+        //TODO: refactor it in a new method inside Record model
         $record->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect(route('contacts.edit', $record->contact->id));
@@ -94,6 +95,7 @@ class RecordController extends Controller
     {
         $record->update($this->validateRequest());
 
+        //TODO: refactor it in a new method inside Record model
         $record->tags()->syncWithoutDetaching($request->get('tag_list'));
 
         return redirect(route('contacts.edit', $record->contact->id));

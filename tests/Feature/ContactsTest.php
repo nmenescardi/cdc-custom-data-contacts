@@ -104,6 +104,10 @@ class ContactsTest extends TestCase
         $response->assertRedirect('/contacts');
     }
 
+    //TODO: Add contact passing tag_list
+
+    //TODO: Modify contact with tag
+
 
     public function from(string $url)
     {
