@@ -130,7 +130,7 @@ class ContactsTest extends TestCase
 
 
     /** @test */
-    public function modify_a_contact_with_new_tags()
+    public function add_more_tags_to_an_existing_contact()
     {
         $tagId1 = factory(Tag::class)->create()->id;
 
@@ -142,12 +142,13 @@ class ContactsTest extends TestCase
         $newContact = Contact::first();
 
         $tagId2 = factory(Tag::class)->create()->id;
+        $tagId3 = factory(Tag::class)->create()->id;
 
         $response = $this->actAs->patch(
             route('contacts.update', $newContact->id),
             [
                 'name' => 'Carlos',
-                'tag_list' => [$tagId2]
+                'tag_list' => [$tagId2, $tagId3]
             ]
         );
 
@@ -155,7 +156,9 @@ class ContactsTest extends TestCase
 
         $this->assertTrue($newContactTags->contains($tagId1));
         $this->assertTrue($newContactTags->contains($tagId2));
+        $this->assertTrue($newContactTags->contains($tagId3));
     }
+
 
 
     //TODO: Modify contact with tag
