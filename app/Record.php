@@ -17,4 +17,9 @@ class Record extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
+
+    public function addTags($tag_list)
+    {
+        $this->tags()->syncWithoutDetaching($tag_list);
+    }
 }
