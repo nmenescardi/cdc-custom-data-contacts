@@ -171,6 +171,40 @@ class RecordTest extends TestCase
         $this->assertTrue($newRecordTags->contains($tagId3));
     }
 
+    public function test_adding_more_tags_to_an_existing_record()
+    {
+        $tagId1 = factory(Tag::class)->create()->id;
+
+        $contactID = factory(Contact::class)->create()->id;
+
+        $response = $this->actAs->post(route('records.store'), [
+            'title' => 'new title',
+            'contact_id' => $contactID,
+            'tag_list' => [
+                $tagId1
+            ]
+        ]);
+
+        $newRecord = Record::first();
+
+        $tagId2 = factory(Tag::class)->create()->id;
+        $tagId3 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->patch(
+            route('records.update', $newRecord->id),
+            [
+                'title' => 'new title',
+                'contact_id' => $contactID,
+                'tag_list' => [$tagId2, $tagId3]
+            ]
+        );
+
+        $newRecordTags = $newRecord->fresh()->tags;
+
+        $this->assertTrue($newRecordTags->contains($tagId1));
+        $this->assertTrue($newRecordTags->contains($tagId2));
+        $this->assertTrue($newRecordTags->contains($tagId3));
+    }
 
     public function from(string $url)
     {
