@@ -60,7 +60,4 @@ class ContactTest extends TestCase
         $newContactTags = $contact->fresh()->tags;
         $this->assertEquals(3, $newContactTags->count());
     }
-
-
-    //TODO: test relationships?
 }
