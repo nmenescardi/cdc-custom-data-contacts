@@ -206,6 +206,39 @@ class RecordTest extends TestCase
         $this->assertTrue($newRecordTags->contains($tagId3));
     }
 
+    public function test_a_record_does_not_have_repeated_tags()
+    {
+        $tagId1 = factory(Tag::class)->create()->id;
+        $tagId2 = factory(Tag::class)->create()->id;
+
+
+        $contactID = factory(Contact::class)->create()->id;
+
+        $response = $this->actAs->post(route('records.store'), [
+            'title' => 'new title',
+            'contact_id' => $contactID,
+            'tag_list' => [$tagId1, $tagId2]
+        ]);
+
+        $newRecord = Record::first();
+
+        $newRecordTags = $newRecord->tags;
+
+        $this->assertEquals(2, $newRecordTags->count());
+
+        $response = $this->actAs->patch(
+            route('records.update', $newRecord->id),
+            [
+                'title' => 'new title',
+                'contact_id' => $contactID,
+                'tag_list' => [$tagId1, $tagId2]
+            ]
+        );
+
+        $newRecordTags = $newRecord->fresh()->tags;
+        $this->assertEquals(2, $newRecordTags->count());
+    }
+
     public function from(string $url)
     {
         $this->app['session']->setPreviousUrl($url);
