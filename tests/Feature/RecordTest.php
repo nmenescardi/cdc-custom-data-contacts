@@ -69,8 +69,23 @@ class RecordTest extends TestCase
         $response->assertRedirect($initialURL);
     }
 
+    public function test_contact_id_is_required()
+    {
+        $initialURL = route('records.create');
 
-    //TODO: contact_id is required
+        $response = $this->actAs->from($initialURL)->post('/records', [
+            'title'         => 'Something',
+            'description'   => 'Something else',
+        ]);
+
+        $response->assertSessionHasErrors('contact_id');
+
+        $this->assertCount(0, Record::all());
+
+        $response->assertRedirect($initialURL);
+    }
+
+
 
     //TODO: desc can be nullable
 
