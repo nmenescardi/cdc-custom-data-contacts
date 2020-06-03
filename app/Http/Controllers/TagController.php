@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\TagColor;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -67,7 +68,9 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        return view('tags.edit', compact('tag'));
+        $colors = TagColor::toSelectArray();
+
+        return view('tags.edit', compact('tag', 'colors'));
     }
 
     /**
@@ -100,7 +103,8 @@ class TagController extends Controller
     protected function validateRequest()
     {
         return request()->validate([
-            'name' => 'required|unique:tags'
+            'name' => 'required|unique:tags',
+            'color' => '',
         ]);
     }
 }
