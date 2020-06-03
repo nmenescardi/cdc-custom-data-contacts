@@ -57,6 +57,19 @@ class TagTest extends TestCase
         $this->assertCount(1, Tag::all());
     }
 
+    public function test_tag_name_is_updated()
+    {
+        $tag_list = ['SomeTag'];
+
+        $this->actAs->post(route('tags.store'), ['tag_list' => $tag_list]);
+
+        $tag = Tag::first();
+
+        $this->actAs->patch(route('tags.update', $tag->id), ['name' => 'New Name']);
+
+        $this->assertEquals('New Name', $tag->fresh()->name);
+    }
+
 
     //TODO: Update
 
