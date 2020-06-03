@@ -84,9 +84,16 @@ class TagTest extends TestCase
     }
 
 
-    //TODO: Update
+    public function test_a_tag_can_be_deleted()
+    {
+        $tag_list = ['Some Tag'];
 
-    //TODO: Delete
+        $this->actAs->post(route('tags.store'), ['tag_list' => $tag_list]);
 
+        $tag = Tag::first();
 
+        $this->actAs->delete(route('tags.destroy', $tag->id));
+
+        $this->assertCount(0, Tag::all());
+    }
 }
