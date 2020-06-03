@@ -32,7 +32,14 @@ class TagTest extends TestCase
         $this->assertCount(1, Tag::all());
     }
 
-    //TODO: store multiple tags.
+    public function test_multiple_tags_can_be_added()
+    {
+        $tag_list = ['SomeTag', 'SomeTag2', 'SomeTag3'];
+
+        $this->actAs->post(route('tags.store'), ['tag_list' => $tag_list]);
+
+        $this->assertCount(3, Tag::all());
+    }
 
 
     //TODO: name is required
