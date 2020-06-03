@@ -41,10 +41,21 @@ class TagTest extends TestCase
         $this->assertCount(3, Tag::all());
     }
 
+    public function test_tag_name_is_unique()
+    {
+        $tag_list = ['SomeTag'];
 
-    //TODO: name is required
+        $this->actAs->post(route('tags.store'), ['tag_list' => $tag_list]);
 
-    //TODO: name is unique
+        $this->assertCount(1, Tag::all());
+
+
+        $tag_list = ['SomeTag'];
+
+        $this->actAs->post(route('tags.store'), ['tag_list' => $tag_list]);
+
+        $this->assertCount(1, Tag::all());
+    }
 
 
     //TODO: Update
