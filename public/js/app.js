@@ -55935,6 +55935,15 @@ $(document).ready(function () {
     placeholder: "Add Tags",
     tags: addNewTags
   });
+  /**
+   * Color Selector:
+   */
+
+  var colorField = $(".select-colors #color");
+  colorField.select2({
+    placeholder: "Select a Color"
+  });
+  colorField.data("select2").$selection.css("height", "38px");
 });
 
 /***/ }),
