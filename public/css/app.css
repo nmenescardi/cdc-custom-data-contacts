@@ -17868,6 +17868,70 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
     color: $color;
 } */
 
+/**
+* Dynamic tags background color
+*/
+
+.tags .badge.tag.bg-color-dark-blue {
+  background-color: #007bff;
+}
+
+.tags .badge.tag.bg-color-blue {
+  background-color: #3490dc;
+}
+
+.tags .badge.tag.bg-color-indigo {
+  background-color: #6574cd;
+}
+
+.tags .badge.tag.bg-color-purple {
+  background-color: #9561e2;
+}
+
+.tags .badge.tag.bg-color-pink {
+  background-color: #f66d9b;
+}
+
+.tags .badge.tag.bg-color-red {
+  background-color: #e3342f;
+}
+
+.tags .badge.tag.bg-color-orange {
+  background-color: #f6993f;
+}
+
+.tags .badge.tag.bg-color-yellow {
+  background-color: #ffed4a;
+}
+
+.tags .badge.tag.bg-color-dark-yellow {
+  background-color: #f8e11a;
+}
+
+.tags .badge.tag.bg-color-green {
+  background-color: #38c172;
+}
+
+.tags .badge.tag.bg-color-teal {
+  background-color: #4dc0b5;
+}
+
+.tags .badge.tag.bg-color-cyan {
+  background-color: #6cb2eb;
+}
+
+.tags .badge.tag.bg-color-gray {
+  background-color: #777;
+}
+
+.tags .badge.tag.bg-color-black {
+  background-color: #000;
+}
+
+.tags .badge.tag.bg-color-white {
+  background-color: #fff;
+}
+
 /* @font-face {
   font-family: "Unica77LL-Regular";
   src: url("../fonts/Unica77LL-Regular.otf") format("opentype");

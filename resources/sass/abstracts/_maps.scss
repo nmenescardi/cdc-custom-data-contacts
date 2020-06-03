@@ -1,26 +1,8 @@
-// Dynamic font size
-/* @for $i from 1 through 200 {
-  html > body .eos-dynamic-font-size-desktop-#{$i} {
-    font-size: ($i - $i/3 + 8) + px;
-  }
-  @include mq-max(tablet) {
-    html > body .eos-dynamic-font-size-mobile-#{$i} {
-      font-size: ($i - $i/3 + 8) + px !important;
+/**
+* Dynamic tags background color
+*/
+@each $skin, $color in $cdc_colors {
+    .tags .badge.tag.bg-color-#{$skin} {
+        background-color: $color;
     }
-  }
 }
-
-
-@for $i from 0 through 100 {
-  html > body .splash--overlay--#{$i} {
-    opacity: $i/100 !important;
-  }
-}
-
-
-@for $i from 0 through 100 {
-  html > body .content-image__overlay-#{$i} {
-    opacity: $i/100 !important;
-  }
-}
- */
