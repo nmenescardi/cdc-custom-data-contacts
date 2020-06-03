@@ -11,7 +11,7 @@
 }
 
 i.fas.fa-edit {
-    color: $yellow-dark;
+    color: map-get($map: $cdc_colors, $key: dark-yellow);
 }
 i.fas.fa-trash-alt {
     color: $red;

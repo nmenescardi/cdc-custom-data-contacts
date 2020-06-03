@@ -18,7 +18,7 @@ html > body {
         text-decoration: none;
 
         &:hover {
-            color: $font-gray;
+            color: map-get($map: $cdc_colors, $key: gray);
         }
     }
 
