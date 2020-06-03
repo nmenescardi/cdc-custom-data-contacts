@@ -18,4 +18,13 @@ class Tag extends Model
     {
         return $this->morphedByMany(Record::class, 'taggable');
     }
+
+    public static function addTags($tagList)
+    {
+        foreach ($tagList ?? [] as $tag) {
+            Tag::updateOrCreate([
+                'name' => $tag
+            ]);
+        }
+    }
 }
