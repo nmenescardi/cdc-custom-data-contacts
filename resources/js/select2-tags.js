@@ -13,5 +13,6 @@ $(document).ready(function() {
     colorField.select2({
         placeholder: "Select a Color"
     });
-    colorField.data("select2").$selection.css("height", "38px");
+    if (colorField.data("select2"))
+        colorField.data("select2").$selection.css("height", "38px");
 });
