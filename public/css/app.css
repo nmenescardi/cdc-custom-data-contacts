@@ -17950,6 +17950,7 @@ html > body {
 html > body a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
 }
 
 html > body a:hover {
