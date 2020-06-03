@@ -1,9 +1,5 @@
 # TODO:
 
-1. Unit test
-1. ------- Git tag 0.1.0
-1.
-1.
 1. Refactor Tests
 1. Multiple color tags.
 1. Scope. To filter models (active, inactive).
