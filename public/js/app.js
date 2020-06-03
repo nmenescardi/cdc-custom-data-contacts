@@ -55941,7 +55941,13 @@ $(document).ready(function () {
 
   var colorField = $(".select-colors #color");
   colorField.select2({
-    placeholder: "Select a Color"
+    placeholder: "Select a Color",
+    escapeMarkup: function escapeMarkup(m) {
+      return m;
+    },
+    templateResult: function templateResult(color) {
+      return $("\n                <div class=\"select-colors__option\">\n                    <span class=\"select-colors__color-rectangle select-colors__color-rectangle--".concat(color.id, "\"></span>\n                    <span class=\"select-colors__text\">").concat(color.text, "</span>\n                </div>\n            "));
+    }
   });
   if (colorField.data("select2")) colorField.data("select2").$selection.css("height", "38px");
 });

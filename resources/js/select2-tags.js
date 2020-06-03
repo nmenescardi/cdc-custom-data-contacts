@@ -11,7 +11,18 @@ $(document).ready(function() {
      */
     const colorField = $(".select-colors #color");
     colorField.select2({
-        placeholder: "Select a Color"
+        placeholder: "Select a Color",
+        escapeMarkup: function(m) {
+            return m;
+        },
+        templateResult: color => {
+            return $(`
+                <div class="select-colors__option">
+                    <span class="select-colors__color-rectangle select-colors__color-rectangle--${color.id}"></span>
+                    <span class="select-colors__text">${color.text}</span>
+                </div>
+            `);
+        }
     });
     if (colorField.data("select2"))
         colorField.data("select2").$selection.css("height", "38px");

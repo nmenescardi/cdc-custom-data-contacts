@@ -5,4 +5,8 @@
     .tags .badge.tag.bg-color-#{$skin} {
         background-color: $color;
     }
+
+    .select-colors__color-rectangle--#{$skin} {
+        background-color: $color;
+    }
 }

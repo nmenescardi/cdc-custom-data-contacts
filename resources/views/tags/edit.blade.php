@@ -33,9 +33,7 @@
                                         <option value="{{$key}}" {{
                                                 (null !== old('color') && old('color') === $key)
                                                 || (null == old('color') && $tag->color === $key)
-                                                ? 'selected' : '' }}>
-                                            {{$color}}
-                                        </option>
+                                                ? 'selected' : '' }}>{{$color}}</option>
                                         @endforeach
                                     </select>
                                 </div>

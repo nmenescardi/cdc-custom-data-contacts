@@ -17876,7 +17876,15 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #007bff;
 }
 
+.select-colors__color-rectangle--dark-blue {
+  background-color: #007bff;
+}
+
 .tags .badge.tag.bg-color-blue {
+  background-color: #3490dc;
+}
+
+.select-colors__color-rectangle--blue {
   background-color: #3490dc;
 }
 
@@ -17884,7 +17892,15 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #6574cd;
 }
 
+.select-colors__color-rectangle--indigo {
+  background-color: #6574cd;
+}
+
 .tags .badge.tag.bg-color-purple {
+  background-color: #9561e2;
+}
+
+.select-colors__color-rectangle--purple {
   background-color: #9561e2;
 }
 
@@ -17892,7 +17908,15 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #f66d9b;
 }
 
+.select-colors__color-rectangle--pink {
+  background-color: #f66d9b;
+}
+
 .tags .badge.tag.bg-color-red {
+  background-color: #e3342f;
+}
+
+.select-colors__color-rectangle--red {
   background-color: #e3342f;
 }
 
@@ -17900,7 +17924,15 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #f6993f;
 }
 
+.select-colors__color-rectangle--orange {
+  background-color: #f6993f;
+}
+
 .tags .badge.tag.bg-color-yellow {
+  background-color: #ffed4a;
+}
+
+.select-colors__color-rectangle--yellow {
   background-color: #ffed4a;
 }
 
@@ -17908,7 +17940,15 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #f8e11a;
 }
 
+.select-colors__color-rectangle--dark-yellow {
+  background-color: #f8e11a;
+}
+
 .tags .badge.tag.bg-color-green {
+  background-color: #38c172;
+}
+
+.select-colors__color-rectangle--green {
   background-color: #38c172;
 }
 
@@ -17916,7 +17956,15 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #4dc0b5;
 }
 
+.select-colors__color-rectangle--teal {
+  background-color: #4dc0b5;
+}
+
 .tags .badge.tag.bg-color-cyan {
+  background-color: #6cb2eb;
+}
+
+.select-colors__color-rectangle--cyan {
   background-color: #6cb2eb;
 }
 
@@ -17924,11 +17972,23 @@ form.was-validated select:valid ~ .select2-container--bootstrap4 .select2-select
   background-color: #777;
 }
 
+.select-colors__color-rectangle--gray {
+  background-color: #777;
+}
+
 .tags .badge.tag.bg-color-black {
   background-color: #000;
 }
 
+.select-colors__color-rectangle--black {
+  background-color: #000;
+}
+
 .tags .badge.tag.bg-color-white {
+  background-color: #fff;
+}
+
+.select-colors__color-rectangle--white {
   background-color: #fff;
 }
 
@@ -18053,5 +18113,11 @@ i.fas {
 .tags .tag,
 .tags .tag a {
   color: #fff;
+}
+
+.select-colors__color-rectangle {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
 }
 
