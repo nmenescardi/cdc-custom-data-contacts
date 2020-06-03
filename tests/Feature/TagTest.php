@@ -70,6 +70,19 @@ class TagTest extends TestCase
         $this->assertEquals('New Name', $tag->fresh()->name);
     }
 
+    public function test_tag_name_is_unique_when_updating()
+    {
+        $tag_list = ['First Tag', 'Unique Tag Name'];
+
+        $this->actAs->post(route('tags.store'), ['tag_list' => $tag_list]);
+
+        $tag = Tag::first();
+
+        $response = $this->actAs->patch(route('tags.update', $tag->id), ['name' => 'Unique Tag Name']);
+
+        $response->assertSessionHasErrors('name');
+    }
+
 
     //TODO: Update
 
