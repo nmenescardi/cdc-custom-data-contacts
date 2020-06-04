@@ -16,8 +16,8 @@ class CreateStoriesTable extends Migration
         Schema::create('stories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->mediumText('description');
-            $table->integer('days_to_expire');
+            $table->mediumText('description')->nullable();
+            $table->integer('days_to_expire')->default(7);
             $table->timestamps();
         });
     }
