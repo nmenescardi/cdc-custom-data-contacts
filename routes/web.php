@@ -21,6 +21,8 @@ Route::resource('records', 'RecordController');
 
 Route::resource('tags', 'TagController');
 
+Route::resource('stories', 'TagController');
+
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
