@@ -22,11 +22,6 @@ class StoryTest extends TestCase
 
     public function test_a_story_can_be_created()
     {
-
-
-        $this->withoutExceptionHandling();
-
-
         $response = $this->actAs->post(
             route('stories.store'),
             [
@@ -37,5 +32,17 @@ class StoryTest extends TestCase
         );
 
         $this->assertCount(1, Story::all());
+    }
+
+    public function test_a_title_is_required()
+    {
+        $response = $this->actAs->post(route('stories.store'), [
+            'description' => '',
+            'days_to_expire' => 6
+        ]);
+
+        $response->assertSessionHasErrors('title');
+
+        $this->assertCount(0, Story::all());
     }
 }
