@@ -6,6 +6,7 @@ use App\Enums\TagColor;
 use App\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use BenSampo\Enum\Rules\EnumValue;
 
 class TagController extends Controller
 {
@@ -114,7 +115,7 @@ class TagController extends Controller
                 'required',
                 $uniqueNameRule
             ],
-            'color' => '',
+            'color' => new EnumValue(TagColor::class),
         ]);
     }
 }
