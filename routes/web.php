@@ -21,7 +21,7 @@ Route::resource('records', 'RecordController');
 
 Route::resource('tags', 'TagController');
 
-Route::resource('stories', 'TagController');
+Route::resource('stories', 'StoryController');
 
 Auth::routes(['register' => false]);
 
