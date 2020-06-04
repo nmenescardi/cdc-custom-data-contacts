@@ -16,7 +16,7 @@
                             @method('PATCH')
 
                             <x-contacts-form :nameValue="old('name') ?? $contact->name" :allTags="$allTags"
-                                buttonLabel="Save Contact" />
+                                :isActive="$contact->active" buttonLabel="Save Contact" />
 
                         </form>
                     </div>

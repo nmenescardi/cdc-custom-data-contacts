@@ -22,7 +22,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate(15);
+        $contacts = Contact::active()->paginate(15);
 
         return View::make('contacts.index', compact('contacts'));
     }
@@ -110,7 +110,8 @@ class ContactController extends Controller
     protected function validateRequest()
     {
         return request()->validate([
-            'name' => 'required|min:3'
+            'name'      => 'required|min:3',
+            'active'    => 'bool'
         ]);
     }
 }

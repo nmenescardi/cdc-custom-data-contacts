@@ -22,4 +22,14 @@ class Contact extends Model
     {
         $this->tags()->syncWithoutDetaching($tags);
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', true);
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('inactive', false);
+    }
 }
