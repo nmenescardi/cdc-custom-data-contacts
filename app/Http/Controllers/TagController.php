@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\TagColor;
 use App\Tag;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -82,7 +83,7 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        $tag->update($this->validateRequest());
+        $tag->update($this->validateRequest($tag->id));
 
         return redirect()->back();
     }
@@ -100,10 +101,19 @@ class TagController extends Controller
         return redirect()->back();
     }
 
-    protected function validateRequest()
+    protected function validateRequest($tagId = 0)
     {
+        // Ignore current tagID to validate unique name on update action
+        $uniqueNameRule =
+            ($tagId) ?
+            Rule::unique('tags')->ignore($tagId) :
+            'unique:tags';
+
         return request()->validate([
-            'name' => 'required|unique:tags',
+            'name' => [
+                'required',
+                $uniqueNameRule
+            ],
             'color' => '',
         ]);
     }
