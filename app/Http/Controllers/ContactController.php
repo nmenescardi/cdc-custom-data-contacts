@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contact;
 use App\Tag;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\View;
 
 class ContactController extends Controller
@@ -22,9 +23,15 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::active()->paginate(15);
+        $perPage = 15;
 
-        return View::make('contacts.index', compact('contacts'));
+        $contacts = Contact::active()->paginate($perPage);
+
+        $currentPage = request()->get('page', 1);
+
+        $paginationOffset = $perPage * ($currentPage - 1);
+
+        return View::make('contacts.index', compact('contacts', 'paginationOffset'));
     }
 
     /**
