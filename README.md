@@ -1,6 +1,5 @@
 # TODO:
 
-1. Scope. To filter models (active, inactive).
 1. Add Story model. With amount of days to be inactive automatically.
 1. Alerts/Flash user feedback messages.
 1. Refactor views using @error Directive
