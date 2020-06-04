@@ -57,10 +57,10 @@ class StoryController extends Controller
 
     public function validateRequest()
     {
-        return [
+        return request()->validate([
             'title'             => 'required',
             'description'       => '',
             'days_to_expire'    => 'integer',
-        ];
+        ]);
     }
 }
