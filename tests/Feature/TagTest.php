@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Enums\TagColor;
 use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -68,6 +69,33 @@ class TagTest extends TestCase
         $this->actAs->patch(route('tags.update', $tag->id), ['name' => 'New Name']);
 
         $this->assertEquals('New Name', $tag->fresh()->name);
+    }
+
+    public function test_tag_color_is_updated()
+    {
+        $initialTag = factory(Tag::class)->create();
+
+        $this->actAs->post(
+            route('tags.store'),
+            [
+                'tag_list' => $initialTag->name,
+                'color' => $initialTag->color
+            ]
+        );
+
+        $savedTag = Tag::first();
+
+        $newColor = TagColor::getRandomValue();
+
+        $this->actAs->patch(
+            route('tags.update', $savedTag->id),
+            [
+                'name'  => $initialTag->name,
+                'color' => $newColor
+            ]
+        );
+
+        $this->assertEquals($newColor, $savedTag->fresh()->color);
     }
 
     public function test_tag_name_is_unique_when_updating()
