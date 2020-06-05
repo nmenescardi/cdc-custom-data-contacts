@@ -67,4 +67,27 @@ class StoryTest extends TestCase
 
         $this->assertCount(1, Story::all());
     }
+
+    public function test_a_story_can_be_updated()
+    {
+        $this->actAs->post(route('stories.store'), [
+            'title'             => 'First Title',
+            'description'       => 'First Desc',
+            'days_to_expire'    => 2
+        ]);
+
+        $this->assertCount(1, Story::all());
+
+        $story = Story::first();
+
+        $this->actAs->patch(route('stories.update', $story), [
+            'title'             => 'New Title',
+            'description'       => 'New Desc',
+            'days_to_expire'    => 15
+        ]);
+
+        $this->assertEquals('New Title', $story->fresh()->title);
+        $this->assertEquals('New Desc', $story->fresh()->description);
+        $this->assertEquals(15, $story->fresh()->days_to_expire);
+    }
 }
