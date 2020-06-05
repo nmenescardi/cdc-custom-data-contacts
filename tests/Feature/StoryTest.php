@@ -58,4 +58,13 @@ class StoryTest extends TestCase
 
         $this->assertCount(1, Story::all());
     }
+
+    public function test_days_to_expire_can_be_null()
+    {
+        $this->actAs->post(route('stories.store'), [
+            'title' => 'A Title'
+        ]);
+
+        $this->assertCount(1, Story::all());
+    }
 }
