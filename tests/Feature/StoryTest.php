@@ -118,8 +118,8 @@ class StoryTest extends TestCase
         $response = $this->actAs->post(
             route('stories.store'),
             [
-                'title'             => 'The Title',
-                'tag_list' => [
+                'title'     => 'The Title',
+                'tag_list'  => [
                     $tagId1, $tagId2, $tagId3
                 ]
             ]
@@ -132,5 +132,37 @@ class StoryTest extends TestCase
         $this->assertTrue($newStoryTags->contains($tagId1));
         $this->assertTrue($newStoryTags->contains($tagId2));
         $this->assertTrue($newStoryTags->contains($tagId3));
+    }
+
+    public function test_adding_more_tags_to_an_existing_story()
+    {
+
+        $tagId1 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->post(
+            route('stories.store'),
+            [
+                'title'     => 'The Title',
+                'tag_list'  => [$tagId1]
+            ]
+        );
+
+        $this->assertCount(1, Story::all());
+
+        $story = Story::first();
+
+        $tagId2 = factory(Tag::class)->create()->id;
+        $tagId3 = factory(Tag::class)->create()->id;
+
+        $this->actAs->patch(route('stories.update', $story), [
+            'title'    => 'New Title',
+            'tag_list' => [$tagId2, $tagId3]
+        ]);
+
+        $storyTags = $story->fresh()->tags;
+
+        $this->assertTrue($storyTags->contains($tagId1));
+        $this->assertTrue($storyTags->contains($tagId2));
+        $this->assertTrue($storyTags->contains($tagId3));
     }
 }
