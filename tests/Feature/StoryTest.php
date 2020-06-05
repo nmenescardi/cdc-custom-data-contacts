@@ -90,4 +90,20 @@ class StoryTest extends TestCase
         $this->assertEquals('New Desc', $story->fresh()->description);
         $this->assertEquals(15, $story->fresh()->days_to_expire);
     }
+
+    public function test_a_story_can_be_deleted()
+    {
+        $this->actAs->post(
+            route('stories.store'),
+            ['title' => 'The Title']
+        );
+
+        $this->assertCount(1, Story::all());
+
+        $story = Story::first();
+
+        $this->actAs->delete(route('stories.destroy', $story));
+
+        $this->assertCount(0, Story::all());
+    }
 }
