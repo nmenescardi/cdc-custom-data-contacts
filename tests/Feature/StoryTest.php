@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Story;
+use App\Tag;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -105,5 +106,31 @@ class StoryTest extends TestCase
         $this->actAs->delete(route('stories.destroy', $story));
 
         $this->assertCount(0, Story::all());
+    }
+
+    public function test_adding_a_story_with_tags()
+    {
+
+        $tagId1 = factory(Tag::class)->create()->id;
+        $tagId2 = factory(Tag::class)->create()->id;
+        $tagId3 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->post(
+            route('stories.store'),
+            [
+                'title'             => 'The Title',
+                'tag_list' => [
+                    $tagId1, $tagId2, $tagId3
+                ]
+            ]
+        );
+
+        $this->assertCount(1, Story::all());
+
+        $newStoryTags = Story::first()->tags;
+
+        $this->assertTrue($newStoryTags->contains($tagId1));
+        $this->assertTrue($newStoryTags->contains($tagId2));
+        $this->assertTrue($newStoryTags->contains($tagId3));
     }
 }
