@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Story;
-use GuzzleHttp\Middleware;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -31,7 +31,9 @@ class StoryController extends Controller
     {
         $story = new Story();
 
-        return View::make('stories.create', compact('story'));
+        $allTags = Tag::pluck('name', 'id')->toArray();
+
+        return View::make('stories.create', compact('story', 'allTags'));
     }
 
     public function store(Request $request)
@@ -50,8 +52,9 @@ class StoryController extends Controller
 
     public function edit(Story $story)
     {
+        $allTags = Tag::pluck('name', 'id')->toArray();
 
-        return View::make('stories.edit', $story);
+        return View::make('stories.edit', compact('story', 'allTags'));
     }
 
     public function update(Request $request, Story $story)
