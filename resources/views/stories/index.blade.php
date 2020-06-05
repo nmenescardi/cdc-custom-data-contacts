@@ -19,6 +19,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Tags</th>
+                                    <th scope="col">Days</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -32,6 +33,9 @@
                                     </td>
                                     <td>
                                         <x-tags-list :tagList='$story->tags' />
+                                    </td>
+                                    <td>
+                                        {{$story->days_to_expire}}
                                     </td>
                                     <td>
                                         <x-action-icons :routeEdit="route('stories.edit',['story'=>$story])"
