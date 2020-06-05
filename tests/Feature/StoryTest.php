@@ -165,4 +165,38 @@ class StoryTest extends TestCase
         $this->assertTrue($storyTags->contains($tagId2));
         $this->assertTrue($storyTags->contains($tagId3));
     }
+
+    public function test_a_story_does_not_have_repeated_tags()
+    {
+
+        $tagId1 = factory(Tag::class)->create()->id;
+        $tagId2 = factory(Tag::class)->create()->id;
+
+        $response = $this->actAs->post(
+            route('stories.store'),
+            [
+                'title'     => 'The Title',
+                'tag_list'  => [$tagId1, $tagId2]
+            ]
+        );
+
+        $this->assertCount(1, Story::all());
+
+        $story = Story::first();
+
+        $storyTags = $story->tags;
+
+        $this->assertEquals(2, $storyTags->count());
+
+        $tagId3 = factory(Tag::class)->create()->id;
+
+        $this->actAs->patch(route('stories.update', $story), [
+            'title'    => 'New Title',
+            'tag_list' => [$tagId1, $tagId2, $tagId3]
+        ]);
+
+        $storyTags = $story->fresh()->tags;
+
+        $this->assertEquals(3, $storyTags->count());
+    }
 }
