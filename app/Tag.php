@@ -19,6 +19,11 @@ class Tag extends Model
         return $this->morphedByMany(Record::class, 'taggable');
     }
 
+    public function stories()
+    {
+        return $this->morphedByMany(Story::class, 'taggable');
+    }
+
     public static function addTags($tagList)
     {
         foreach ($tagList ?? [] as $tag) {

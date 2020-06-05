@@ -16,9 +16,10 @@ class TagRelationshipsTableSeeder extends Seeder
         $taggable = [
             \App\Record::class,
             \App\Contact::class,
+            \App\Story::class,
         ];
 
-        foreach (range(20, 100) as $i) {
+        foreach (range(50, 200) as $i) {
 
             $randomType = $faker->randomElement($taggable);
             $randomID = $randomType::all()->random(1)->first()->id;
