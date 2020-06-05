@@ -3,18 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\TaggableRelationship;
 
 class Story extends Model
 {
+    use TaggableRelationship;
+
     protected $guarded = [];
-
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    public function addTags($tagList)
-    {
-        $this->tags()->syncWithoutDetaching($tagList);
-    }
 }
