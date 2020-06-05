@@ -30,7 +30,9 @@ class StoryController extends Controller
 
     public function store(Request $request)
     {
-        Story::create($this->validateRequest());
+        $story = Story::create($this->validateRequest());
+
+        $story->addTags($request->get('tag_list'));
 
         return redirect()->back();
     }
@@ -49,6 +51,8 @@ class StoryController extends Controller
     public function update(Request $request, Story $story)
     {
         $story->update($this->validateRequest());
+
+        $story->addTags($request->get('tag_list'));
 
         return redirect()->back();
     }
