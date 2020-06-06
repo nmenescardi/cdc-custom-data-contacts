@@ -6,7 +6,7 @@
 <div class="tag-edit cdc-table">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-4 cdc-table__main-col">
+            <div class="col-md-3 cdc-table__main-col">
                 <div class="card">
 
                     <x-table-header title="Edit Tag" :route="route('tags.create')" />
@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 cdc-table__main-col">
+            <div class="col-md-3 cdc-table__main-col">
                 <div class="card">
 
                     <x-table-header title="Contacts" :route="route('contacts.create')" />
@@ -69,7 +69,7 @@
                 </div>
             </div>
 
-            <div class="col-md-4 cdc-table__main-col records-table">
+            <div class="col-md-3 cdc-table__main-col records-table">
                 <div class="card">
 
                     <x-table-header title="Records" :route="route('records.create')" />
@@ -89,6 +89,38 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>
                                         <a href="{{route('records.edit',['record'=>$record])}}">{{$record->title}}</a>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3 cdc-table__main-col stories-table">
+                <div class="card">
+
+                    <x-table-header title="Stories" :route="route('stories.create')" />
+
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach ($tag->stories as $story)
+                                <tr>
+                                    <th scope="row">{{$loop->iteration}}</th>
+                                    <td>
+                                        <a href="{{route('stories.edit',['story'=>$story])}}">{{$story->title}}</a>
                                     </td>
                                 </tr>
                                 @endforeach
