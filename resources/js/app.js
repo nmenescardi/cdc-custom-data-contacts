@@ -22,6 +22,10 @@ window.Vue = require("vue");
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component("tag-grid", require("./components/TagGrid.vue").default);
+Vue.component(
+    "contacts-form",
+    require("./components/ContactsForm.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
