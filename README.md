@@ -1,9 +1,5 @@
 # TODO:
 
-1. Add Story model. With amount of days to be inactive automatically.
-    1. Cron Job, run daily to expire stories based on the current day.
-    1. Complete tests
-    1.
 1. Alerts/Flash user feedback messages.
 1. Refactor views using @error Directive
 1. Refactor Tests
