@@ -78,7 +78,7 @@ class StoryController extends Controller
         return request()->validate([
             'title'             => 'required',
             'description'       => '',
-            'days_to_expire'    => 'integer',
+            'days_to_expire'    => 'integer|min:0',
         ]);
     }
 }
