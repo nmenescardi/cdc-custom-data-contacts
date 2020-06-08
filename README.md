@@ -1,7 +1,6 @@
 # TODO:
 
 1. Alerts/Flash user feedback messages.
-1. Refactor views using @error Directive
 1. Refactor Tests
 1. ------- Git tag 0.2.0
 1.
