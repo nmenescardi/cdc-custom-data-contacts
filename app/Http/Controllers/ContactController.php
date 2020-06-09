@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Feedback\FeedbackInterface as Feedback;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -52,11 +53,13 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Feedback $feedback)
     {
         $newContact = Contact::create($this->validateRequest());
 
         $newContact->addTags($request->get('tag_list'));
+
+        $feedback->success('The contact has been created');
 
         return redirect(route('contacts.edit', $newContact->id));
     }
@@ -92,11 +95,13 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(Request $request, Contact $contact, Feedback $feedback)
     {
         $contact->update($this->validateRequest());
 
         $contact->addTags($request->get('tag_list'));
+
+        $feedback->success('The contact has been updated');
 
         return redirect()->back();
     }
@@ -107,9 +112,11 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact, Feedback $feedback)
     {
         $contact->delete();
+
+        $feedback->success('The contact has been deleted');
 
         return redirect('contacts');
     }
