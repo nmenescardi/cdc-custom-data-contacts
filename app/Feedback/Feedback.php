@@ -6,7 +6,7 @@ class Feedback implements FeedbackInterface
 {
     public function success($message)
     {
-        toastr()->info($message);
+        toastr()->success($message);
     }
 
     public function error($message)
