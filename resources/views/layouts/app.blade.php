@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name', 'CDC'))</title>
+    @toastr_css
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -89,5 +90,9 @@
         </main>
     </div>
 </body>
+
+@jquery
+@toastr_js
+@toastr_render
 
 </html>
