@@ -8,11 +8,11 @@
         <transition-group tag="ol" name="list" class="contact-list">
             <li
                 class="contact-list__item"
-                v-bind:key="index"
-                v-for="(contact, index) in filteredContacts"
+                v-bind:key="contact.text"
+                v-for="(contact, index) in contacts"
             >
                 <button class="contact-list__item-content">
-                    {{ contact.name }}
+                    {{ contact.text }}
                 </button>
                 <button
                     class="btn contact-list__item-remove"
@@ -30,20 +30,8 @@ export default {
     data() {
         return {
             inputVal: "",
-            contacts: [],
-            visibility: "all",
-            filters: []
+            contacts: []
         };
-    },
-    watch: {
-        contacts: {
-            handler: function(contacts) {}
-        }
-    },
-    computed: {
-        filteredContacts: function() {
-            return filters[this.visibility](this.contacts);
-        }
     },
     methods: {
         addContact: function(e) {
@@ -55,12 +43,6 @@ export default {
                 });
             }
             this.inputVal = "";
-        },
-        toggleContact: function(contact) {
-            contact.complete = !contact.complete;
-        },
-        filterContacts: function(filter) {
-            this.visibility = filter;
         },
         deleteContact: function(index) {
             this.contacts.splice(index, 1);

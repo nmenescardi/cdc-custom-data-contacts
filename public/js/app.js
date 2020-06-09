@@ -1939,20 +1939,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       inputVal: "",
-      contacts: [],
-      visibility: "all",
-      filters: []
+      contacts: []
     };
-  },
-  watch: {
-    contacts: {
-      handler: function handler(contacts) {}
-    }
-  },
-  computed: {
-    filteredContacts: function filteredContacts() {
-      return filters[this.visibility](this.contacts);
-    }
   },
   methods: {
     addContact: function addContact(e) {
@@ -1966,12 +1954,6 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.inputVal = "";
-    },
-    toggleContact: function toggleContact(contact) {
-      contact.complete = !contact.complete;
-    },
-    filterContacts: function filterContacts(filter) {
-      this.visibility = filter;
     },
     deleteContact: function deleteContact(index) {
       this.contacts.splice(index, 1);
@@ -44415,27 +44397,31 @@ var render = function() {
       _c(
         "transition-group",
         { staticClass: "contact-list", attrs: { tag: "ol", name: "list" } },
-        _vm._l(_vm.filteredContacts, function(contact, index) {
-          return _c("li", { key: index, staticClass: "contact-list__item" }, [
-            _c("button", { staticClass: "contact-list__item-content" }, [
-              _vm._v(
-                "\n                " + _vm._s(contact.name) + "\n            "
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn contact-list__item-remove",
-                on: {
-                  click: function($event) {
-                    return _vm.deleteContact(index)
+        _vm._l(_vm.contacts, function(contact, index) {
+          return _c(
+            "li",
+            { key: contact.text, staticClass: "contact-list__item" },
+            [
+              _c("button", { staticClass: "contact-list__item-content" }, [
+                _vm._v(
+                  "\n                " + _vm._s(contact.text) + "\n            "
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn contact-list__item-remove",
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteContact(index)
+                    }
                   }
-                }
-              },
-              [_c("i", { staticClass: "fa fa-times" })]
-            )
-          ])
+                },
+                [_c("i", { staticClass: "fa fa-times" })]
+              )
+            ]
+          )
         }),
         0
       )
