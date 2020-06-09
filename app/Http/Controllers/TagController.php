@@ -7,6 +7,7 @@ use App\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use BenSampo\Enum\Rules\EnumValue;
+use App\Feedback\FeedbackInterface as Feedback;
 
 class TagController extends Controller
 {
@@ -44,9 +45,11 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Feedback $feedback)
     {
         Tag::addTags($request->get('tag_list'));
+
+        $feedback->success('The tag has been created');
 
         return redirect('contacts');
     }
@@ -82,9 +85,11 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request, Tag $tag, Feedback $feedback)
     {
         $tag->update($this->validateRequest($tag->id));
+
+        $feedback->success('The tag has been updated');
 
         return redirect()->back();
     }
@@ -95,9 +100,11 @@ class TagController extends Controller
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(Tag $tag, Feedback $feedback)
     {
         $tag->delete();
+
+        $feedback->success('The tag has been deleted');
 
         return redirect()->back();
     }
