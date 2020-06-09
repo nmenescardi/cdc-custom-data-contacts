@@ -6,6 +6,7 @@ use App\Contact;
 use App\Record;
 use App\Tag;
 use Illuminate\Http\Request;
+use App\Feedback\FeedbackInterface as Feedback;
 
 class RecordController extends Controller
 {
@@ -48,11 +49,13 @@ class RecordController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Feedback $feedback)
     {
         $record = Record::create($this->validateRequest());
 
         $record->addTags($request->get('tag_list'));
+
+        $feedback->success('The record has been created');
 
         return redirect(route('contacts.edit', $record->contact->id));
     }
@@ -90,11 +93,13 @@ class RecordController extends Controller
      * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Record $record)
+    public function update(Request $request, Record $record, Feedback $feedback)
     {
         $record->update($this->validateRequest());
 
         $record->addTags($request->get('tag_list'));
+
+        $feedback->success('The record has been updated');
 
         return redirect(route('contacts.edit', $record->contact->id));
     }
@@ -105,10 +110,12 @@ class RecordController extends Controller
      * @param  \App\Record  $record
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Record $record)
+    public function destroy(Record $record, Feedback $feedback)
     {
         $contactId = $record->contact->id;
         $record->delete();
+
+        $feedback->success('The record has been deleted');
 
         return redirect(route('contacts.edit', $contactId));
     }
