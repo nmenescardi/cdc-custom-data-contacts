@@ -26,7 +26,7 @@
 
                                 @foreach ($contacts as $contact)
                                 <tr>
-                                    <th scope="row">{{$loop->iteration + $paginationOffset}}</th>
+                                    <th scope="row">{{$loop->iteration + $contacts->firstItem() - 1}}</th>
                                     <td>
                                         <a
                                             href="{{route('contacts.edit',['contact'=>$contact])}}">{{$contact->name}}</a>

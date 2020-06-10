@@ -17,15 +17,9 @@ class StoryController extends Controller
 
     public function index()
     {
-        $perPage = 15;
+        $stories = Story::paginate();
 
-        $stories = Story::paginate($perPage);
-
-        $currentPage = request()->get('page', 1);
-
-        $paginationOffset = $perPage * ($currentPage - 1);
-
-        return View::make('stories.index', compact('stories', 'paginationOffset'));
+        return View::make('stories.index', compact('stories'));
     }
 
     public function create()

@@ -27,7 +27,7 @@
 
                                 @foreach ($stories as $story)
                                 <tr>
-                                    <th scope="row">{{$loop->iteration + $paginationOffset}}</th>
+                                    <th scope="row">{{$loop->iteration + $stories->firstItem() - 1}}</th>
                                     <td>
                                         <a href="{{route('stories.edit',['story'=>$story])}}">{{$story->title}}</a>
                                     </td>

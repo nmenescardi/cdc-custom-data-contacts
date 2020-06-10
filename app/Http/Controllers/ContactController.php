@@ -24,15 +24,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $perPage = 15;
+        $contacts = Contact::active()->paginate();
 
-        $contacts = Contact::active()->paginate($perPage);
-
-        $currentPage = request()->get('page', 1);
-
-        $paginationOffset = $perPage * ($currentPage - 1);
-
-        return View::make('contacts.index', compact('contacts', 'paginationOffset'));
+        return View::make('contacts.index', compact('contacts'));
     }
 
     /**
