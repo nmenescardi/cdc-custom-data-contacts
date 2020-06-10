@@ -4,10 +4,11 @@ namespace App;
 
 use App\Traits\TaggableRelationship;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Record extends Model
 {
-    use TaggableRelationship;
+    use TaggableRelationship, SoftDeletes;
 
     protected $guarded = [];
 

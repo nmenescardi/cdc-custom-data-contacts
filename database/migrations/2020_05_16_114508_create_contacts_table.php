@@ -17,6 +17,7 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('active')->default(true);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

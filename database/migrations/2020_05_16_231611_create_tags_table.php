@@ -21,6 +21,7 @@ class CreateTagsTable extends Migration
                 'color',
                 TagColor::getValues()
             )->default(TagColor::DarkBlue);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

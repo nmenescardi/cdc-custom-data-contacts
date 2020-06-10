@@ -18,6 +18,7 @@ class CreateRecordsTable extends Migration
             $table->unsignedInteger('contact_id')->nullable();
             $table->string('title');
             $table->mediumText('description')->nullable();
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

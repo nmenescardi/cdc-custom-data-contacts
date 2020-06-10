@@ -18,6 +18,7 @@ class CreateStoriesTable extends Migration
             $table->string('title');
             $table->mediumText('description')->nullable();
             $table->integer('days_to_expire')->default(7);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
