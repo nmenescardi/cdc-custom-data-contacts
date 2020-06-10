@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form action="{{ route('stories.store') }}" method="POST">
 
-                        <x-stories-form :story="$story" :allTags="$allTags" buttonLabel="Add Story" />
+                        <x-stories-form :story="$story" buttonLabel="Add Story" />
 
                     </form>
                 </div>

@@ -35,12 +35,11 @@ class RecordController extends Controller
      */
     public function create(Request $request)
     {
-        $allTags = Tag::pluck('name', 'id')->toArray();
         $prefilledContact = $request->get('prefilledContact');
         $contacts = Contact::all();
         $record = new Record();
 
-        return view('records.create', compact('record', 'contacts', 'prefilledContact', 'allTags'));
+        return view('records.create', compact('record', 'contacts', 'prefilledContact'));
     }
 
     /**
@@ -80,10 +79,9 @@ class RecordController extends Controller
      */
     public function edit(Record $record)
     {
-        $allTags = Tag::pluck('name', 'id')->toArray();
         $contacts = Contact::all();
 
-        return view('records.edit', compact('record', 'contacts', 'allTags'));
+        return view('records.edit', compact('record', 'contacts'));
     }
 
     /**

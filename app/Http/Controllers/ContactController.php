@@ -36,9 +36,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $allTags = Tag::pluck('name', 'id')->toArray();
-
-        return View::make('contacts.create', compact('allTags'));
+        return View::make('contacts.create');
     }
 
     /**
@@ -78,8 +76,7 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        $allTags = Tag::pluck('name', 'id')->toArray();
-        return View::make('contacts.edit', compact('contact', 'allTags'));
+        return View::make('contacts.edit', compact('contact'));
     }
 
     /**

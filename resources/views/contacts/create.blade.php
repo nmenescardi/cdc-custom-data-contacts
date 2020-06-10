@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <form action="{{ route('contacts.store') }}" method="POST">
 
-                        <x-contacts-form :nameValue="old('name')" :allTags="$allTags" :isActive="old('active') ?? 1"
+                        <x-contacts-form :nameValue="old('name')" :isActive="old('active') ?? 1"
                             buttonLabel="Add Contact" />
 
                     </form>

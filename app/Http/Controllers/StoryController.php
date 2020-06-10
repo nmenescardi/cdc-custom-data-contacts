@@ -26,9 +26,7 @@ class StoryController extends Controller
     {
         $story = new Story();
 
-        $allTags = Tag::pluck('name', 'id')->toArray();
-
-        return View::make('stories.create', compact('story', 'allTags'));
+        return View::make('stories.create', compact('story'));
     }
 
     public function store(Request $request, Feedback $feedback)
@@ -49,9 +47,7 @@ class StoryController extends Controller
 
     public function edit(Story $story)
     {
-        $allTags = Tag::pluck('name', 'id')->toArray();
-
-        return View::make('stories.edit', compact('story', 'allTags'));
+        return View::make('stories.edit', compact('story'));
     }
 
     public function update(Request $request, Story $story, Feedback $feedback)

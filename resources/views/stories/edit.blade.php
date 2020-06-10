@@ -15,7 +15,7 @@
                         <form action="{{ route('stories.update', ['story' => $story]) }}" method="POST">
                             @method('PATCH')
 
-                            <x-stories-form :story="$story" :allTags="$allTags" buttonLabel="Save Story" />
+                            <x-stories-form :story="$story" buttonLabel="Save Story" />
 
                         </form>
                     </div>

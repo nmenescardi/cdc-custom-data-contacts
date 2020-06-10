@@ -15,8 +15,7 @@
                         <form action="{{ route('records.update', ['record' => $record]) }}" method="POST">
                             @method('PATCH')
 
-                            <x-records-form :record="$record" :allTags="$allTags" buttonLabel="Save Record"
-                                :contacts="$contacts" />
+                            <x-records-form :record="$record" buttonLabel="Save Record" :contacts="$contacts" />
 
                         </form>
                     </div>

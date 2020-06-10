@@ -15,8 +15,8 @@
                         <form action="{{ route('contacts.update', ['contact' => $contact]) }}" method="POST">
                             @method('PATCH')
 
-                            <x-contacts-form :nameValue="old('name') ?? $contact->name" :allTags="$allTags"
-                                :isActive="$contact->active" buttonLabel="Save Contact" />
+                            <x-contacts-form :nameValue="old('name') ?? $contact->name" :isActive="$contact->active"
+                                buttonLabel="Save Contact" />
 
                         </form>
                     </div>
