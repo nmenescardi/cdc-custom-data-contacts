@@ -2,12 +2,6 @@
 
 1.
 
-1. Refactor Pagination
-1. View Composer for \$allTags.
-    1. Separated class?
-    1. See if it's possible to reference the blade component directly instead of a partial.
-    1. https://youtu.be/7QWZxjgvEQc?list=PLpzy7FIRqpGD5pN3-Y66YDtxJCYuGumFO&t=754
-    1.
 1. ------- Git tag 0.2.0
 1.
 1.
@@ -22,6 +16,11 @@
 1. Refactor Tests (docs, review sites)
     1. Assert see: https://github.com/taylorotwell/website/blob/master/tests/Feature/ViewPostsTest.php
     1. \$this->signIn() https://github.com/taylorotwell/website/blob/master/tests/Feature/PromotionsTest.php
+    1. Check this out: https://www.youtube.com/watch?v=GEHsHA9x0bs&list=PLmwAMIdrAmK7SHlZRwc73GGjQ9AEFGu7g
+1.
+1. ------- Git tag 0.3.0
+
+1. Exposing local web server: https://www.youtube.com/watch?v=A8WQRVv3Wgs
 1.
 1. Telescope
     1. Adding telescope: https://www.youtube.com/watch?v=qeGbPeM3_m8
@@ -29,6 +28,8 @@
 1.
 1.
 1. Emails / Notifications: https://www.youtube.com/watch?v=upKOwoe8LsM
+    1. https://www.youtube.com/watch?v=Ny-mloJuoAI
+    1. https://www.youtube.com/watch?v=upKOwoe8LsM
 1.
 1. Cashier(Stripe)
 1.
@@ -36,5 +37,5 @@
 1. Fix select2 using 'tag:true' to allow new tags. Save using AJAX
 1.
 1. Cache, Redis?
-1. Deployment to VPS
+1. Deployment to VPS: https://www.youtube.com/watch?v=VopxsIHrJH4
 1.
