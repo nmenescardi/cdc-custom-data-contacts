@@ -11,7 +11,7 @@
                 <x-table-header title="Add Contact" />
 
                 <div class="card-body">
-                    <form action="{{ route('contacts.store') }}" method="POST">
+                    <form action="{{ route('contacts.store') }}" method="POST" enctype="multipart/form-data">
 
                         <x-contacts-form :nameValue="old('name')" :isActive="old('active') ?? 1"
                             buttonLabel="Add Contact" />

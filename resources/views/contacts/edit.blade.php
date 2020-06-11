@@ -12,7 +12,8 @@
                     <x-table-header title="Edit Contact" />
 
                     <div class="card-body">
-                        <form action="{{ route('contacts.update', ['contact' => $contact]) }}" method="POST">
+                        <form action="{{ route('contacts.update', ['contact' => $contact]) }}" method="POST"
+                            enctype="multipart/form-data">
                             @method('PATCH')
 
                             <x-contacts-form :nameValue="old('name') ?? $contact->name" :isActive="$contact->active"

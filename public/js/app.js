@@ -2046,9 +2046,6 @@ __webpack_require__.r(__webpack_exports__);
       images: []
     };
   },
-  mounted: function mounted() {
-    console.log("label", this.label);
-  },
   methods: {
     onDragEnter: function onDragEnter(e) {
       e.preventDefault();
@@ -2112,11 +2109,12 @@ __webpack_require__.r(__webpack_exports__);
 
       return "".concat(Math.round(size * 100) / 100, " ").concat(fSExt[i]);
     },
-    upload: function upload() {
+    upload: function upload(e) {
+      e.preventDefault();
       var formData = new FormData();
       this.files.forEach(function (file) {
         formData.append("images[]", file, file.name);
-      }); //TODO: Axios?
+      });
     },
     truncatedName: function truncatedName(text) {
       var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 25;
@@ -44702,11 +44700,7 @@ var render = function() {
             ],
             staticClass: "upload-control"
           },
-          [
-            _c("label", { attrs: { for: "file" } }, [_vm._v("Select a file")]),
-            _vm._v(" "),
-            _c("button", { on: { click: _vm.upload } }, [_vm._v("Upload")])
-          ]
+          [_c("label", { attrs: { for: "file" } }, [_vm._v("Select a file")])]
         ),
         _vm._v(" "),
         _c(
@@ -44734,7 +44728,13 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("input", {
-                attrs: { type: "file", name: "file", id: "file", multiple: "" },
+                ref: "file",
+                attrs: {
+                  type: "file",
+                  name: "file[]",
+                  id: "file",
+                  multiple: ""
+                },
                 on: { change: _vm.onInputChange }
               })
             ])

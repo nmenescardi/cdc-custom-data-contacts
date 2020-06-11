@@ -16,7 +16,6 @@
         >
             <div class="upload-control" v-show="images.length">
                 <label for="file">Select a file</label>
-                <button @click="upload">Upload</button>
             </div>
 
             <div v-show="!images.length">
@@ -27,8 +26,9 @@
                     <label for="file">Select a file</label>
                     <input
                         type="file"
-                        name="file"
+                        name="file[]"
                         id="file"
+                        ref="file"
                         @change="onInputChange"
                         multiple
                     />
@@ -71,9 +71,6 @@ export default {
         files: [],
         images: []
     }),
-    mounted() {
-        console.log("label", this.label);
-    },
     methods: {
         onDragEnter(e) {
             e.preventDefault();
@@ -133,13 +130,13 @@ export default {
             }
             return `${Math.round(size * 100) / 100} ${fSExt[i]}`;
         },
-        upload() {
+        upload(e) {
+            e.preventDefault();
+
             const formData = new FormData();
             this.files.forEach(file => {
                 formData.append("images[]", file, file.name);
             });
-
-            //TODO: Axios?
         },
         truncatedName(text, limit = 25) {
             if (text.length >= limit) return text.slice(0, limit - 3) + "...";
