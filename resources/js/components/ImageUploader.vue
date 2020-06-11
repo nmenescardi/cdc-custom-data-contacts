@@ -37,7 +37,10 @@
                 <img :src="image" :alt="`Image Uploader ${index}`" />
 
                 <div class="details">
-                    <span class="name" v-text="files[index].name"></span>
+                    <span
+                        class="name"
+                        v-text="truncatedName(files[index].name)"
+                    ></span>
                     <span
                         class="size"
                         v-text="getFileSize(files[index].size)"
@@ -118,6 +121,11 @@ export default {
             });
 
             //TODO: Axios?
+        },
+        truncatedName(text, limit = 25) {
+            if (text.length >= limit) return text.slice(0, limit - 3) + "...";
+
+            return text;
         }
     }
 };
@@ -174,16 +182,16 @@ export default {
         flex-wrap: wrap;
         margin-top: 20px;
         .img-wrapper {
-            width: 160px;
             display: flex;
             flex-direction: column;
             margin: 10px;
-            height: 150px;
             justify-content: space-between;
             background: #fff;
             box-shadow: 5px 5px 20px #3e3737;
             img {
-                max-height: 105px;
+                object-fit: cover;
+                width: 200px;
+                height: 150px;
             }
         }
         .details {

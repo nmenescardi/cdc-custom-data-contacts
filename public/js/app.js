@@ -2022,6 +2022,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2095,6 +2098,11 @@ __webpack_require__.r(__webpack_exports__);
       this.files.forEach(function (file) {
         formData.append("images[]", file, file.name);
       }); //TODO: Axios?
+    },
+    truncatedName: function truncatedName(text) {
+      var limit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 25;
+      if (text.length >= limit) return text.slice(0, limit - 3) + "...";
+      return text;
     }
   }
 });
@@ -6604,7 +6612,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".uploader[data-v-4984bfe4] {\n  width: 100%;\n  background: #2196f3;\n  color: #fff;\n  padding: 40px 15px;\n  text-align: center;\n  border-radius: 10px;\n  border: 3px dashed #fff;\n  font-size: 20px;\n  position: relative;\n}\n.uploader.dragging[data-v-4984bfe4] {\n  background: #fff;\n  color: #2196f3;\n  border: 3px dashed #2196f3;\n}\n.uploader.dragging .file-input label[data-v-4984bfe4] {\n  background: #2196f3;\n  color: #fff;\n}\n.uploader i[data-v-4984bfe4] {\n  font-size: 85px;\n}\n.uploader .file-input[data-v-4984bfe4] {\n  width: 200px;\n  margin: auto;\n  height: 68px;\n  position: relative;\n}\n.uploader .file-input label[data-v-4984bfe4],\n.uploader .file-input input[data-v-4984bfe4] {\n  background: #fff;\n  color: #2196f3;\n  width: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: 7px;\n  cursor: pointer;\n}\n.uploader .file-input input[data-v-4984bfe4] {\n  opacity: 0;\n  z-index: -2;\n}\n.uploader .images-preview[data-v-4984bfe4] {\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: 20px;\n}\n.uploader .images-preview .img-wrapper[data-v-4984bfe4] {\n  width: 160px;\n  display: flex;\n  flex-direction: column;\n  margin: 10px;\n  height: 150px;\n  justify-content: space-between;\n  background: #fff;\n  box-shadow: 5px 5px 20px #3e3737;\n}\n.uploader .images-preview .img-wrapper img[data-v-4984bfe4] {\n  max-height: 105px;\n}\n.uploader .images-preview .details[data-v-4984bfe4] {\n  font-size: 12px;\n  background: #fff;\n  color: #000;\n  display: flex;\n  flex-direction: column;\n  align-items: self-start;\n  padding: 3px 6px;\n  text-align: left;\n}\n.uploader .images-preview .details .name[data-v-4984bfe4] {\n  overflow: hidden;\n  height: 18px;\n}\n.uploader .upload-control[data-v-4984bfe4] {\n  position: absolute;\n  width: 100%;\n  background: #fff;\n  top: 0;\n  left: 0;\n  border-top-left-radius: 7px;\n  border-top-right-radius: 7px;\n  padding: 12px;\n  text-align: right;\n}\n.uploader .upload-control button[data-v-4984bfe4],\n.uploader .upload-control label[data-v-4984bfe4] {\n  background: #2196f3;\n  border: 2px solid #03a9f4;\n  border-radius: 3px;\n  color: #fff;\n  font-size: 15px;\n  cursor: pointer;\n}\n.uploader .upload-control label[data-v-4984bfe4] {\n  padding: 2px 5px;\n  margin-right: 10px;\n  margin-bottom: 0;\n}", ""]);
+exports.push([module.i, ".uploader[data-v-4984bfe4] {\n  width: 100%;\n  background: #2196f3;\n  color: #fff;\n  padding: 40px 15px;\n  text-align: center;\n  border-radius: 10px;\n  border: 3px dashed #fff;\n  font-size: 20px;\n  position: relative;\n}\n.uploader.dragging[data-v-4984bfe4] {\n  background: #fff;\n  color: #2196f3;\n  border: 3px dashed #2196f3;\n}\n.uploader.dragging .file-input label[data-v-4984bfe4] {\n  background: #2196f3;\n  color: #fff;\n}\n.uploader i[data-v-4984bfe4] {\n  font-size: 85px;\n}\n.uploader .file-input[data-v-4984bfe4] {\n  width: 200px;\n  margin: auto;\n  height: 68px;\n  position: relative;\n}\n.uploader .file-input label[data-v-4984bfe4],\n.uploader .file-input input[data-v-4984bfe4] {\n  background: #fff;\n  color: #2196f3;\n  width: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n  padding: 10px;\n  border-radius: 4px;\n  margin-top: 7px;\n  cursor: pointer;\n}\n.uploader .file-input input[data-v-4984bfe4] {\n  opacity: 0;\n  z-index: -2;\n}\n.uploader .images-preview[data-v-4984bfe4] {\n  display: flex;\n  flex-wrap: wrap;\n  margin-top: 20px;\n}\n.uploader .images-preview .img-wrapper[data-v-4984bfe4] {\n  display: flex;\n  flex-direction: column;\n  margin: 10px;\n  justify-content: space-between;\n  background: #fff;\n  box-shadow: 5px 5px 20px #3e3737;\n}\n.uploader .images-preview .img-wrapper img[data-v-4984bfe4] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  width: 200px;\n  height: 150px;\n}\n.uploader .images-preview .details[data-v-4984bfe4] {\n  font-size: 12px;\n  background: #fff;\n  color: #000;\n  display: flex;\n  flex-direction: column;\n  align-items: self-start;\n  padding: 3px 6px;\n  text-align: left;\n}\n.uploader .images-preview .details .name[data-v-4984bfe4] {\n  overflow: hidden;\n  height: 18px;\n}\n.uploader .upload-control[data-v-4984bfe4] {\n  position: absolute;\n  width: 100%;\n  background: #fff;\n  top: 0;\n  left: 0;\n  border-top-left-radius: 7px;\n  border-top-right-radius: 7px;\n  padding: 12px;\n  text-align: right;\n}\n.uploader .upload-control button[data-v-4984bfe4],\n.uploader .upload-control label[data-v-4984bfe4] {\n  background: #2196f3;\n  border: 2px solid #03a9f4;\n  border-radius: 3px;\n  color: #fff;\n  font-size: 15px;\n  cursor: pointer;\n}\n.uploader .upload-control label[data-v-4984bfe4] {\n  padding: 2px 5px;\n  margin-right: 10px;\n  margin-bottom: 0;\n}", ""]);
 
 // exports
 
@@ -44725,7 +44733,9 @@ var render = function() {
             _c("div", { staticClass: "details" }, [
               _c("span", {
                 staticClass: "name",
-                domProps: { textContent: _vm._s(_vm.files[index].name) }
+                domProps: {
+                  textContent: _vm._s(_vm.truncatedName(_vm.files[index].name))
+                }
               }),
               _vm._v(" "),
               _c("span", {
