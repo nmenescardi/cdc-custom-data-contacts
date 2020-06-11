@@ -34,6 +34,9 @@
                 v-for="(image, index) in images"
                 :key="index"
             >
+                <div class="close-button" @click="removeImage(index)">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
                 <img :src="image" :alt="`Image Uploader ${index}`" />
 
                 <div class="details">
@@ -103,6 +106,10 @@ export default {
             reader.onload = e => this.images.push(e.target.result);
 
             reader.readAsDataURL(file);
+        },
+        removeImage(index) {
+            this.images.splice(index, 1);
+            this.files.splice(index, 1);
         },
         getFileSize(size) {
             const fSExt = ["Bytes", "KB", "MB", "GB"];
@@ -182,6 +189,7 @@ export default {
         flex-wrap: wrap;
         margin-top: 20px;
         .img-wrapper {
+            position: relative;
             display: flex;
             flex-direction: column;
             margin: 10px;
@@ -232,6 +240,23 @@ export default {
             padding: 2px 5px;
             margin-right: 10px;
             margin-bottom: 0;
+        }
+    }
+    .close-button {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        i {
+            font-size: 12px;
+            line-height: 10px;
+            font-weight: 600;
+            padding: 4px;
         }
     }
 }
