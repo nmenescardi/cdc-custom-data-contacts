@@ -1,53 +1,61 @@
 <template>
-    <div
-        class="uploader"
-        @dragenter="onDragEnter"
-        @dragleave="onDragLeave"
-        @dragover.prevent
-        @drop="onDrop"
-        :class="{ dragging: isDragging }"
-    >
-        <div class="upload-control" v-show="images.length">
-            <label for="file">Select a file</label>
-            <button @click="upload">Upload</button>
-        </div>
-
-        <div v-show="!images.length">
-            <i class="fa fa-cloud-upload"></i>
-            <p>Drag your images here</p>
-            <div>OR</div>
-            <div class="file-input">
+    <div class="uploader-container form-group">
+        <label
+            for="file"
+            class="main-label"
+            v-if="label"
+            v-text="label"
+        ></label>
+        <div
+            class="uploader"
+            @dragenter="onDragEnter"
+            @dragleave="onDragLeave"
+            @dragover.prevent
+            @drop="onDrop"
+            :class="{ dragging: isDragging }"
+        >
+            <div class="upload-control" v-show="images.length">
                 <label for="file">Select a file</label>
-                <input
-                    type="file"
-                    name="file"
-                    id="file"
-                    @change="onInputChange"
-                    multiple
-                />
+                <button @click="upload">Upload</button>
             </div>
-        </div>
 
-        <div class="images-preview" v-show="images.length">
-            <div
-                class="img-wrapper"
-                v-for="(image, index) in images"
-                :key="index"
-            >
-                <div class="close-button" @click="removeImage(index)">
-                    <i class="fa fa-times" aria-hidden="true"></i>
+            <div v-show="!images.length">
+                <i class="fa fa-cloud-upload"></i>
+                <p>Drag your images here</p>
+                <div>OR</div>
+                <div class="file-input">
+                    <label for="file">Select a file</label>
+                    <input
+                        type="file"
+                        name="file"
+                        id="file"
+                        @change="onInputChange"
+                        multiple
+                    />
                 </div>
-                <img :src="image" :alt="`Image Uploader ${index}`" />
+            </div>
 
-                <div class="details">
-                    <span
-                        class="name"
-                        v-text="truncatedName(files[index].name)"
-                    ></span>
-                    <span
-                        class="size"
-                        v-text="getFileSize(files[index].size)"
-                    ></span>
+            <div class="images-preview" v-show="images.length">
+                <div
+                    class="img-wrapper"
+                    v-for="(image, index) in images"
+                    :key="index"
+                >
+                    <div class="close-button" @click="removeImage(index)">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                    <img :src="image" :alt="`Image Uploader ${index}`" />
+
+                    <div class="details">
+                        <span
+                            class="name"
+                            v-text="truncatedName(files[index].name)"
+                        ></span>
+                        <span
+                            class="size"
+                            v-text="getFileSize(files[index].size)"
+                        ></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,12 +64,16 @@
 
 <script>
 export default {
+    props: ["label"],
     data: () => ({
         isDragging: false,
         dragCount: 0,
         files: [],
         images: []
     }),
+    mounted() {
+        console.log("label", this.label);
+    },
     methods: {
         onDragEnter(e) {
             e.preventDefault();

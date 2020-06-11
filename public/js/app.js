@@ -2028,7 +2028,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["label"],
   data: function data() {
     return {
       isDragging: false,
@@ -2036,6 +2045,9 @@ __webpack_require__.r(__webpack_exports__);
       files: [],
       images: []
     };
+  },
+  mounted: function mounted() {
+    console.log("label", this.label);
   },
   methods: {
     onDragEnter: function onDragEnter(e) {
@@ -44653,129 +44665,143 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "uploader",
-      class: { dragging: _vm.isDragging },
-      on: {
-        dragenter: _vm.onDragEnter,
-        dragleave: _vm.onDragLeave,
-        dragover: function($event) {
-          $event.preventDefault()
-        },
-        drop: _vm.onDrop
-      }
-    },
-    [
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.images.length,
-              expression: "images.length"
-            }
-          ],
-          staticClass: "upload-control"
-        },
-        [
-          _c("label", { attrs: { for: "file" } }, [_vm._v("Select a file")]),
-          _vm._v(" "),
-          _c("button", { on: { click: _vm.upload } }, [_vm._v("Upload")])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: !_vm.images.length,
-              expression: "!images.length"
-            }
-          ]
-        },
-        [
-          _c("i", { staticClass: "fa fa-cloud-upload" }),
-          _vm._v(" "),
-          _c("p", [_vm._v("Drag your images here")]),
-          _vm._v(" "),
-          _c("div", [_vm._v("OR")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "file-input" }, [
+  return _c("div", { staticClass: "uploader-container form-group" }, [
+    _vm.label
+      ? _c("label", {
+          staticClass: "main-label",
+          attrs: { for: "file" },
+          domProps: { textContent: _vm._s(_vm.label) }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "uploader",
+        class: { dragging: _vm.isDragging },
+        on: {
+          dragenter: _vm.onDragEnter,
+          dragleave: _vm.onDragLeave,
+          dragover: function($event) {
+            $event.preventDefault()
+          },
+          drop: _vm.onDrop
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.images.length,
+                expression: "images.length"
+              }
+            ],
+            staticClass: "upload-control"
+          },
+          [
             _c("label", { attrs: { for: "file" } }, [_vm._v("Select a file")]),
             _vm._v(" "),
-            _c("input", {
-              attrs: { type: "file", name: "file", id: "file", multiple: "" },
-              on: { change: _vm.onInputChange }
-            })
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.images.length,
-              expression: "images.length"
-            }
-          ],
-          staticClass: "images-preview"
-        },
-        _vm._l(_vm.images, function(image, index) {
-          return _c("div", { key: index, staticClass: "img-wrapper" }, [
-            _c(
-              "div",
+            _c("button", { on: { click: _vm.upload } }, [_vm._v("Upload")])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
               {
-                staticClass: "close-button",
-                on: {
-                  click: function($event) {
-                    return _vm.removeImage(index)
-                  }
-                }
-              },
-              [
-                _c("i", {
-                  staticClass: "fa fa-times",
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]
-            ),
+                name: "show",
+                rawName: "v-show",
+                value: !_vm.images.length,
+                expression: "!images.length"
+              }
+            ]
+          },
+          [
+            _c("i", { staticClass: "fa fa-cloud-upload" }),
             _vm._v(" "),
-            _c("img", {
-              attrs: { src: image, alt: "Image Uploader " + index }
-            }),
+            _c("p", [_vm._v("Drag your images here")]),
             _vm._v(" "),
-            _c("div", { staticClass: "details" }, [
-              _c("span", {
-                staticClass: "name",
-                domProps: {
-                  textContent: _vm._s(_vm.truncatedName(_vm.files[index].name))
-                }
-              }),
+            _c("div", [_vm._v("OR")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "file-input" }, [
+              _c("label", { attrs: { for: "file" } }, [
+                _vm._v("Select a file")
+              ]),
               _vm._v(" "),
-              _c("span", {
-                staticClass: "size",
-                domProps: {
-                  textContent: _vm._s(_vm.getFileSize(_vm.files[index].size))
-                }
+              _c("input", {
+                attrs: { type: "file", name: "file", id: "file", multiple: "" },
+                on: { change: _vm.onInputChange }
               })
             ])
-          ])
-        }),
-        0
-      )
-    ]
-  )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.images.length,
+                expression: "images.length"
+              }
+            ],
+            staticClass: "images-preview"
+          },
+          _vm._l(_vm.images, function(image, index) {
+            return _c("div", { key: index, staticClass: "img-wrapper" }, [
+              _c(
+                "div",
+                {
+                  staticClass: "close-button",
+                  on: {
+                    click: function($event) {
+                      return _vm.removeImage(index)
+                    }
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fa fa-times",
+                    attrs: { "aria-hidden": "true" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("img", {
+                attrs: { src: image, alt: "Image Uploader " + index }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "details" }, [
+                _c("span", {
+                  staticClass: "name",
+                  domProps: {
+                    textContent: _vm._s(
+                      _vm.truncatedName(_vm.files[index].name)
+                    )
+                  }
+                }),
+                _vm._v(" "),
+                _c("span", {
+                  staticClass: "size",
+                  domProps: {
+                    textContent: _vm._s(_vm.getFileSize(_vm.files[index].size))
+                  }
+                })
+              ])
+            ])
+          }),
+          0
+        )
+      ]
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

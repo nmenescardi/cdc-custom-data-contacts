@@ -21,6 +21,8 @@
 
 <x-existing-tags-field />
 
+<image-uploader label="Profile Picture: "></image-uploader>
+
 <button type="submit" class="btn btn-primary">{{ $buttonLabel }}</button>
 
 @csrf
