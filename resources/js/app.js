@@ -26,6 +26,10 @@ Vue.component(
     "contacts-form",
     require("./components/ContactsForm.vue").default
 );
+Vue.component(
+    "image-uploader",
+    require("./components/ImageUploader.vue").default
+);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
