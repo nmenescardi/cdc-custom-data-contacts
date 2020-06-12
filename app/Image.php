@@ -15,4 +15,14 @@ class Image extends Model
     {
         return $this->morphTo();
     }
+
+    public static function storeImages($images = [])
+    {
+        return array_map(
+            function ($imageFile) {
+                return $imageFile->store('uploads', 'public');
+            },
+            $images
+        );
+    }
 }

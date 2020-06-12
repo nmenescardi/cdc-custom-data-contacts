@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use App\Feedback\FeedbackInterface as Feedback;
+use App\Image;
 use App\Tag;
 use Illuminate\Http\Request;
 
@@ -88,6 +89,8 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact, Feedback $feedback)
     {
+        /* $images = Image::storeImages($request->files ?? []); */
+
         $contact->update($this->validateRequest());
 
         $contact->addTags($request->get('tag_list'));
