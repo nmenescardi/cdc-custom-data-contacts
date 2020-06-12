@@ -26,4 +26,9 @@ class Contact extends Model
     {
         return $query->where('inactive', false);
     }
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
