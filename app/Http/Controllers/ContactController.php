@@ -89,9 +89,10 @@ class ContactController extends Controller
      */
     public function update(Request $request, Contact $contact, Feedback $feedback)
     {
-        /* $images = Image::storeImages($request->files ?? []); */
 
         $contact->update($this->validateRequest());
+
+        $images = Image::storeImages(isset($request->file[0]) ? $request->file[0] : []);
 
         $contact->addTags($request->get('tag_list'));
 
