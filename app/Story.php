@@ -11,4 +11,9 @@ class Story extends Model
     use TaggableRelationship, SoftDeletes;
 
     protected $guarded = [];
+
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }
