@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Story;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class ExpireStories extends Command
 {
@@ -44,8 +45,10 @@ class ExpireStories extends Command
 
             if (--$story->days_to_expire > 0)
                 $story->save();
-            else
+            else {
+                Log::debug('Expiring Story:', ['object' => $story->toJson()]);
                 $story->delete();
+            }
         });
     }
 }
