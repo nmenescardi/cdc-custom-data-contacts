@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <form action="{{ route('records.store') }}" method="POST">
 
-                            <x-records-form :record="$record" buttonLabel="Add Record" :contacts="$contacts" />
+                            <x-records-form :record="$record" buttonLabel="Add Record" :contacts="$contacts" :prefilledContact="$prefilledContact" />
                         </form>
                     </div>
 

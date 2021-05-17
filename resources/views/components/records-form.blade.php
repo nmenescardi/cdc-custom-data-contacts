@@ -1,4 +1,4 @@
-@props(['record', 'contacts', 'buttonLabel'])
+@props(['record', 'contacts', 'buttonLabel', 'prefilledContact'])
 
 
 <div class="form-group">
@@ -9,7 +9,7 @@
     @error('title')<div><span class="text-danger">{{ $message }}</span></div>@enderror
 </div>
 
-<x-contacts-list :contacts="$contacts" :selectedContactID="$record->contact_id" />
+<x-contacts-list :contacts="$contacts" :selectedContactID="$prefilledContact ?? $record->contact_id" />
 
 <x-existing-tags-field />
 
