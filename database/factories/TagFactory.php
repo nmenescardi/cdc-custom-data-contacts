@@ -9,6 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Tag::class, function (Faker $faker) {
     return [
         'name'  => $faker->unique()->word(),
-        'color' => TagColor::getRandomValue()
+        'color' => 'red'
     ];
 });

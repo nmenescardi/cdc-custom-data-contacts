@@ -19,8 +19,11 @@ class CreateTagsTable extends Migration
             $table->string('name')->unique();
             $table->enum(
                 'color',
-                TagColor::getValues()
-            )->default(TagColor::DarkBlue);
+                [
+                    'red',
+                    'dark-blue',
+                ]
+            )->default('dark-blue');
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });

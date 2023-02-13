@@ -85,7 +85,7 @@ class TagTest extends TestCase
 
         $savedTag = Tag::first();
 
-        $newColor = TagColor::getRandomValue();
+        $newColor = 'dark-blue';
 
         $this->actAs->patch(
             route('tags.update', $savedTag->id),

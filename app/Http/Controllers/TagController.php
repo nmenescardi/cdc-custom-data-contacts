@@ -6,7 +6,6 @@ use App\Enums\TagColor;
 use App\Tag;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
-use BenSampo\Enum\Rules\EnumValue;
 use App\Feedback\FeedbackInterface as Feedback;
 
 class TagController extends Controller
@@ -73,7 +72,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        $colors = TagColor::toSelectArray();
+        $colors = [];
 
         return view('tags.edit', compact('tag', 'colors'));
     }
@@ -122,7 +121,7 @@ class TagController extends Controller
                 'required',
                 $uniqueNameRule
             ],
-            'color' => new EnumValue(TagColor::class),
+            'color' => 'sometimes',
         ]);
     }
 }
