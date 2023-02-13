@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class StoriesTableSeeder extends Seeder
+class ContactsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class StoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Story::class, 50)->create();
+        factory(App\Contact::class, 35)->create();
     }
 }

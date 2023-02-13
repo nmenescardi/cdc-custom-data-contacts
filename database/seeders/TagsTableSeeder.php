@@ -1,8 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
-class RecordsTableSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +13,6 @@ class RecordsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Record::class, 100)->create();
+        factory(App\Tag::class, 50)->create();
     }
 }
